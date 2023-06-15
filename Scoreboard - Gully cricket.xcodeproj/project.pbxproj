@@ -7,18 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A1CE5772A2FACFD00E7C28F /* Scoreboard___Gully_cricketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE5762A2FACFD00E7C28F /* Scoreboard___Gully_cricketApp.swift */; };
+		6A1BBA042A33138800E2F71B /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BBA032A33138800E2F71B /* MatchView.swift */; };
+		6A1CE5772A2FACFD00E7C28F /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */; };
 		6A1CE5792A2FACFD00E7C28F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE5782A2FACFD00E7C28F /* ContentView.swift */; };
 		6A1CE57B2A2FACFD00E7C28F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */; };
 		6A1CE57E2A2FACFD00E7C28F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */; };
+		6A3308E12A3128A400950050 /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E02A3128A400950050 /* Outcome.swift */; };
+		6A3308E32A3128F300950050 /* Innings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E22A3128F300950050 /* Innings.swift */; };
+		6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62416F2A31BC8200758FBA /* ScoreBar.swift */; };
+		6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */; };
+		6A9264302A39BE1900AB4539 /* HexColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */; };
+		6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9379232A374A6600CEE5C7 /* TextBar.swift */; };
+		6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */; };
+		6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A1BBA032A33138800E2F71B /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scoreboard - Gully cricket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A1CE5762A2FACFD00E7C28F /* Scoreboard___Gully_cricketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scoreboard___Gully_cricketApp.swift"; sourceTree = "<group>"; };
+		6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		6A1CE5782A2FACFD00E7C28F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6A3308E02A3128A400950050 /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
+		6A3308E22A3128F300950050 /* Innings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Innings.swift; sourceTree = "<group>"; };
+		6A62416F2A31BC8200758FBA /* ScoreBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBar.swift; sourceTree = "<group>"; };
+		6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedHStackView.swift; sourceTree = "<group>"; };
+		6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorExtension.swift; sourceTree = "<group>"; };
+		6A9379232A374A6600CEE5C7 /* TextBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBar.swift; sourceTree = "<group>"; };
+		6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVariables.swift; sourceTree = "<group>"; };
+		6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +69,10 @@
 		6A1CE5752A2FACFD00E7C28F /* Scoreboard - Gully cricket */ = {
 			isa = PBXGroup;
 			children = (
-				6A1CE5762A2FACFD00E7C28F /* Scoreboard___Gully_cricketApp.swift */,
-				6A1CE5782A2FACFD00E7C28F /* ContentView.swift */,
+				6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */,
+				6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */,
+				6A3308DF2A31287D00950050 /* Model */,
+				6A62416E2A31BBFE00758FBA /* View */,
 				6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */,
 				6A1CE57C2A2FACFD00E7C28F /* Preview Content */,
 			);
@@ -65,6 +85,29 @@
 				6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6A3308DF2A31287D00950050 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6A3308E02A3128A400950050 /* Outcome.swift */,
+				6A3308E22A3128F300950050 /* Innings.swift */,
+				6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6A62416E2A31BBFE00758FBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A1CE5782A2FACFD00E7C28F /* ContentView.swift */,
+				6A1BBA032A33138800E2F71B /* MatchView.swift */,
+				6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */,
+				6A9379232A374A6600CEE5C7 /* TextBar.swift */,
+				6A62416F2A31BC8200758FBA /* ScoreBar.swift */,
+				6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +126,8 @@
 			dependencies = (
 			);
 			name = "Scoreboard - Gully cricket";
+			packageProductDependencies = (
+			);
 			productName = "Scoreboard - Gully cricket";
 			productReference = 6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +156,8 @@
 				Base,
 			);
 			mainGroup = 6A1CE56A2A2FACFD00E7C28F;
+			packageReferences = (
+			);
 			productRefGroup = 6A1CE5742A2FACFD00E7C28F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +184,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A3308E12A3128A400950050 /* Outcome.swift in Sources */,
 				6A1CE5792A2FACFD00E7C28F /* ContentView.swift in Sources */,
-				6A1CE5772A2FACFD00E7C28F /* Scoreboard___Gully_cricketApp.swift in Sources */,
+				6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */,
+				6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */,
+				6A1CE5772A2FACFD00E7C28F /* Scoreboard.swift in Sources */,
+				6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */,
+				6A9264302A39BE1900AB4539 /* HexColorExtension.swift in Sources */,
+				6A1BBA042A33138800E2F71B /* MatchView.swift in Sources */,
+				6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */,
+				6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */,
+				6A3308E32A3128F300950050 /* Innings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
