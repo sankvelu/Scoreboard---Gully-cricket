@@ -14,12 +14,14 @@
 		6A1CE57E2A2FACFD00E7C28F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */; };
 		6A3308E12A3128A400950050 /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E02A3128A400950050 /* Outcome.swift */; };
 		6A3308E32A3128F300950050 /* Innings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E22A3128F300950050 /* Innings.swift */; };
+		6A4A98AC2A4192910054FEC5 /* PreviousOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */; };
 		6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62416F2A31BC8200758FBA /* ScoreBar.swift */; };
 		6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */; };
 		6A9264302A39BE1900AB4539 /* HexColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */; };
 		6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9379232A374A6600CEE5C7 /* TextBar.swift */; };
 		6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */; };
 		6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */; };
+		6AF31B742A4088BB00CEE2F9 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF31B732A4088BB00CEE2F9 /* Shimmer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,7 @@
 		6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6A3308E02A3128A400950050 /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
 		6A3308E22A3128F300950050 /* Innings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Innings.swift; sourceTree = "<group>"; };
+		6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOver.swift; sourceTree = "<group>"; };
 		6A62416F2A31BC8200758FBA /* ScoreBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBar.swift; sourceTree = "<group>"; };
 		6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedHStackView.swift; sourceTree = "<group>"; };
 		6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorExtension.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AF31B742A4088BB00CEE2F9 /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +110,7 @@
 				6A9379232A374A6600CEE5C7 /* TextBar.swift */,
 				6A62416F2A31BC8200758FBA /* ScoreBar.swift */,
 				6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */,
+				6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			);
 			name = "Scoreboard - Gully cricket";
 			packageProductDependencies = (
+				6AF31B732A4088BB00CEE2F9 /* Shimmer */,
 			);
 			productName = "Scoreboard - Gully cricket";
 			productReference = 6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */;
@@ -157,6 +163,7 @@
 			);
 			mainGroup = 6A1CE56A2A2FACFD00E7C28F;
 			packageReferences = (
+				6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = 6A1CE5742A2FACFD00E7C28F /* Products */;
 			projectDirPath = "";
@@ -186,6 +193,7 @@
 			files = (
 				6A3308E12A3128A400950050 /* Outcome.swift in Sources */,
 				6A1CE5792A2FACFD00E7C28F /* ContentView.swift in Sources */,
+				6A4A98AC2A4192910054FEC5 /* PreviousOver.swift in Sources */,
 				6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */,
 				6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */,
 				6A1CE5772A2FACFD00E7C28F /* Scoreboard.swift in Sources */,
@@ -329,8 +337,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,8 +366,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,6 +403,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6AF31B732A4088BB00CEE2F9 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6A1CE56B2A2FACFD00E7C28F /* Project object */;
 }

@@ -20,7 +20,7 @@ struct OutcomeButton: View {
             .padding(15)
             .foregroundColor(.black)
             .background(.thinMaterial)
-            .border(Color.black, width: 0.1)
+            .border(Color.black, width: 0.15)
             .cornerRadius(15)
         }
     }

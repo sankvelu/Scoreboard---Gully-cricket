@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct ContentView: View  {
     
@@ -37,9 +38,10 @@ struct ContentView: View  {
                         .background(.thinMaterial)
                         .border(Color.green, width:0.15)
                         .cornerRadius(10)
-                        
+                    
+                   // Match not started
 
-                 if(!matchvariables.hasMatchStarted){
+                 if(!matchvariables.matchStarted){
                      
                         Spacer()
                         
@@ -47,7 +49,7 @@ struct ContentView: View  {
                             
                             Spacer()
                             
-                            VStack(alignment: .leading,spacing:10){
+                            VStack(alignment: .leading,spacing:5){
                                 
                                 HStack{
                                     TextBar(textLabel: "Number of Overs ?")
@@ -62,7 +64,7 @@ struct ContentView: View  {
                                     .padding(3)
                                     .background(.ultraThinMaterial)
                                     .cornerRadius(15)
-                                    .padding(15)
+                                    .padding(10)
                                     
                                 }
                                 
@@ -85,17 +87,19 @@ struct ContentView: View  {
                             NavigationLink(
                                 destination: Matchview(),
                                 label: {
-                                    Text("Start New Match")
+                                    Text("Start Match")
                                         .padding()
                                         .font(Font.title)
                                         .foregroundColor(.black)
-                                        .background(.thinMaterial)
+                                        .background(.ultraThickMaterial)
                                         .border(Color.green, width:0.15)
                                         .cornerRadius(50)
+                                        .shimmering()
+                                        
                                 }
                                 
                             ).simultaneousGesture(TapGesture().onEnded {
-                                matchvariables.hasMatchStarted.toggle()
+                                matchvariables.matchStarted.toggle()
                             }).padding()
                             
                             Spacer()
@@ -110,6 +114,7 @@ struct ContentView: View  {
                     // Match Started
                     
                     else{
+                        
                         VStack(alignment: .center){
                             Spacer()
                             
@@ -120,9 +125,10 @@ struct ContentView: View  {
                                         .padding()
                                         .font(Font.title)
                                         .foregroundColor(.black)
-                                        .background(.thinMaterial)
+                                        .background(.ultraThickMaterial)
                                         .border(Color.green, width:0.15)
                                         .cornerRadius(50)
+                                        .shimmering()
 
                                 }
                             ).simultaneousGesture(TapGesture().onEnded {
@@ -131,7 +137,7 @@ struct ContentView: View  {
                             
                             
                             Button("End Match?"){
-                                matchvariables.matchCompleted.toggle()
+                                matchvariables.matchStartedAndCompleted.toggle()
                             }
                             .buttonStyle(.borderedProminent)
                             
@@ -140,9 +146,18 @@ struct ContentView: View  {
                     }
                     
                 }
-                .alert("Discard match?", isPresented: $matchvariables.matchCompleted){
+                .alert("Discard match?", isPresented: $matchvariables.matchStartedAndCompleted){
                     Button("End Match", role: .destructive) {
-                        matchvariables.hasMatchStarted.toggle()
+                        matchvariables.matchStarted.toggle()
+                        if(matchvariables.inningsCompleted){
+                            matchvariables.inningsCompleted.toggle()
+                        }
+                        if(matchvariables.chaseStarted){
+                            matchvariables.chaseStarted.toggle()
+                        }
+                        if(matchvariables.chaseCompleted){
+                            matchvariables.chaseCompleted.toggle()
+                        }
                     }.cornerRadius(20)
                     
                 }message: {

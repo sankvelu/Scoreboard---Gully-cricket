@@ -18,7 +18,7 @@ struct WrappedHStackView: View {
 }
 
 struct TagsView: View {
-    let colors: [String: Color] = [ "NB":.teal, "Wd": .teal, "W": .red ]
+    let colors: [String: Color] = [ "NB":.yellow, "Wd": .yellow, "W": .red ]
     
     let items: [String]
     var groupedItems: [[String]] = [[String]]()
@@ -67,14 +67,28 @@ struct TagsView: View {
             ForEach(groupedItems, id: \.self) { subItems in
                 HStack {
                     ForEach(subItems, id: \.self) { word in
-                        Text(word)
-                            .fixedSize()
-                            .font(Font.caption)
-                            .fontWeight(.bold)
-                            .padding(15)
-                            .background(colors[word, default: .black])
-                            .clipShape(Circle())
-                            .foregroundColor(.white)
+                        if(word.contains("NC")){
+                            let modifiedText = word.replacingOccurrences(of: "NC", with: "")
+                            Text(modifiedText)
+                                .fixedSize()
+                                .font(Font.caption)
+                                .fontWeight(.bold)
+                                .padding(15)
+                                .background(.cyan)
+                                .clipShape(Circle())
+                                .foregroundColor(.white)
+                            
+                        }
+                        else{
+                            Text(word)
+                                .fixedSize()
+                                .font(Font.caption)
+                                .fontWeight(.bold)
+                                .padding(15)
+                                .background(colors[word, default: Color("Voilet")])
+                                .clipShape(Circle())
+                                .foregroundColor(.white)
+                        }
                     }
                 }
             }
@@ -89,7 +103,7 @@ struct TagsView: View {
 struct WrappedHStackView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            WrappedHStackView(words: ["NB","Wd","W","1","6","3"])
+            WrappedHStackView(words: ["NB","Wd","W","1","6","3","2","6","6","W","6NC"])
         }.padding()
     }
 }

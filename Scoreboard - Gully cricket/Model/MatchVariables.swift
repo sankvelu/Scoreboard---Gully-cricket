@@ -13,10 +13,12 @@ class MatchVariables : ObservableObject {
     @Published var numberOfOvers : Int = 1
     @Published var runForWide = true
     @Published var runForNoBall = true
+    @Published var target:Int = 0
     
-    @Published var hasMatchStarted = false
+    @Published var matchStarted = false
     @Published var inningsCompleted = false
     @Published var chaseStarted = false
-    @Published var matchCompleted = false
+    @Published var chaseCompleted = false
+    @Published var matchStartedAndCompleted = false
     
 }

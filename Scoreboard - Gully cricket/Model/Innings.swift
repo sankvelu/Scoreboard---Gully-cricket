@@ -8,25 +8,26 @@
 import Foundation
 import SwiftUI
 
-struct Innings{
+class Innings: ObservableObject{
     
-    var inningsOutcome = [Outcome]() ;
+    @Published var inningsOutcome = [Outcome]() ;
     
-    var ballCounter:Int = 0;
-    var runs:Int = 0;
-    var wickets:Int = 0;
+    @Published var ballCounter:Int = 0;
+    @Published var runs:Int = 0;
+    @Published var wickets:Int = 0;
+    
+    var previousOverRuns : Int = 0;
+    
     var currentOver : Int {
        (ballCounter/6) + 1;
     }
-    var thisOverOutcome = [String]()
+
     
-   // Adding outcome to Model
-    
-    mutating func addOutcome(outcome outcomeOfBall:String, ballcounted: Bool){
+     func addOutcome(outcome outcomeOfBall:String, ballcounted: Bool){
         
         inningsOutcome.append(Outcome(outcome: outcomeOfBall, isBallCounted: ballcounted, over: currentOver))
         
-        print(inningsOutcome)
+//        print(inningsOutcome)
         
         switch(outcomeOfBall){
         case "NB","Wd":
@@ -62,12 +63,12 @@ struct Innings{
     
     // Reversing the outcome
     
-    mutating func undoOutcome(){
+     func undoOutcome(){
         
         if( inningsOutcome.count != 0){
             
             let  outcomeLast = inningsOutcome[inningsOutcome.count-1]
-            print(outcomeLast)
+//            print(outcomeLast)
             let outCome = outcomeLast.outcome
             let isBallCounted = outcomeLast.isBallCounted
             
@@ -101,21 +102,74 @@ struct Innings{
         
     }
     
-    // Present overs outcome
+    // Present over outcome
     
-    mutating func thisOver()->[String]{
+    func thisOver()->[String]{
         
-      for outCome in inningsOutcome {
-       
-          if(outCome.over == currentOver){
-                thisOverOutcome.append(outCome.outcome)
-            }
+        var thisOverOutcome = [String]()
+        
+        for outCome in inningsOutcome {
             
+            if(outCome.over == currentOver){
+                
+                if(!outCome.isBallCounted){
+                    
+                    switch(outCome.outcome){
+                    case "1","2","3","4","5","6","W" :
+                        thisOverOutcome.append(outCome.outcome+"NC")
+                    default:
+                        thisOverOutcome.append(outCome.outcome)
+                        
+                    }
+                }else{
+                    thisOverOutcome.append(outCome.outcome)
+                }
+                
+            }
         }
         return thisOverOutcome
-        
     }
     
+    //Previous Over Outcome
     
-    
+    func previousOver()->[String]{
+        
+      var previousOverOutcome = [String]()
+        
+        for outCome in inningsOutcome {
+            
+            if(outCome.over == currentOver-1){
+                
+                //Copypaste start
+                
+                if(!outCome.isBallCounted){
+                    
+                    switch(outCome.outcome){
+                    case "1","2","3","4","5","6","W" :
+                        previousOverOutcome.append(outCome.outcome+"NC")
+                    default:
+                        previousOverOutcome.append(outCome.outcome)
+                        
+                    }
+                }else{
+                    previousOverOutcome.append(outCome.outcome)
+                }
+                //Copypaste end
+                
+                switch(outCome.outcome){
+                case "1","2","3","4","5","6":
+                    previousOverRuns = previousOverRuns + Int(outCome.outcome)!
+                case "Wd","NB":
+                    previousOverRuns = previousOverRuns + 1
+                default:
+                    previousOverRuns = previousOverRuns + 0
+                }
+            }
+        }
+        print(previousOverRuns)
+        
+        return previousOverOutcome
+        
+    }
+   
 }
