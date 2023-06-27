@@ -73,10 +73,12 @@ struct TagsView: View {
                                 .fixedSize()
                                 .font(Font.caption)
                                 .fontWeight(.bold)
+                                .frame(width:15,height:15)
                                 .padding(15)
                                 .background(.cyan)
-                                .clipShape(Circle())
                                 .foregroundColor(.white)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white,lineWidth: 1))
                             
                         }
                         else{
@@ -84,17 +86,19 @@ struct TagsView: View {
                                 .fixedSize()
                                 .font(Font.caption)
                                 .fontWeight(.bold)
+                                .frame(width:15,height:15)
                                 .padding(15)
                                 .background(colors[word, default: Color("Voilet")])
-                                .clipShape(Circle())
                                 .foregroundColor(.white)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white,lineWidth: 1))
+           
                         }
                     }
                 }
             }
-            
-            Spacer()
-        }
+              Spacer()
+        }.padding(10)
     }
     }
     
@@ -102,8 +106,11 @@ struct TagsView: View {
 
 struct WrappedHStackView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            WrappedHStackView(words: ["NB","Wd","W","1","6","3","2","6","6","W","6NC"])
-        }.padding()
+        ZStack{
+            Color.black
+            VStack{
+                WrappedHStackView(words: ["NB","Wd","1","6","3","2","W","6NC"])
+            }.padding()
+        }
     }
 }

@@ -26,125 +26,130 @@ struct ContentView: View  {
                     .edgesIgnoringSafeArea(.all)
                 
                 //Section 2
-                
-                VStack{
-                    
-                    Spacer(minLength: 50)
-                    
-                    Text("Scoreboard - Gully Cricket")
-                        .padding()
-                        .font(Font.title)
-                        .foregroundColor(.black)
-                        .background(.thinMaterial)
-                        .border(Color.green, width:0.15)
-                        .cornerRadius(10)
-                    
-                   // Match not started
-
-                 if(!matchvariables.matchStarted){
-                     
-                        Spacer()
+                GeometryReader{ geometry in
+                    VStack{
                         
-                        VStack(alignment: .center,spacing:50){
+                        Spacer(minLength: 50)
+                        
+                        Text("Scoreboard - Gully Cricket")
+                            .padding()
+                            .font(Font.title)
+                            .foregroundColor(.black)
+                            .background(.thinMaterial)
+                            .border(Color.green, width:0.15)
+                            .cornerRadius(10)
+                        
+                        // Match not started
+                        
+                        if(!matchvariables.matchStarted){
                             
                             Spacer()
                             
-                            VStack(alignment: .leading,spacing:5){
+                            VStack(alignment: .center,spacing:50){
                                 
-                                HStack{
-                                    TextBar(textLabel: "Number of Overs ?")
+                                Spacer()
+                                
+                                VStack(alignment: .leading,spacing:5){
                                     
-                                    Picker("Number of overs ?", selection: $matchvariables.numberOfOvers){
-                                        ForEach(1...50, id: \.self) {
-                                            Text("\($0) ")
-                                        }
-                                    }
-                                    .tint(.black)
-                                    .pickerStyle(.automatic)
-                                    .padding(3)
-                                    .background(.ultraThinMaterial)
-                                    .cornerRadius(15)
-                                    .padding(10)
-                                    
-                                }
-                                
-                                HStack{
-                                    TextBar(textLabel: "Run for wide ?")
-                                    Toggle("", isOn: $matchvariables.runForWide)
-                                        .frame(width: 50)
-                                        .padding(10)
-                                }
-                                
-                                HStack{
-                                    TextBar(textLabel: "Run for No Ball ?")
-                                    Toggle("", isOn: $matchvariables.runForNoBall)
-                                        .frame(width: 50)
-                                        .padding(10)
-                                }
-                                
-                            }
-                        
-                            NavigationLink(
-                                destination: Matchview(),
-                                label: {
-                                    Text("Start Match")
-                                        .padding()
-                                        .font(Font.title)
-                                        .foregroundColor(.black)
-                                        .background(.ultraThickMaterial)
-                                        .border(Color.green, width:0.15)
-                                        .cornerRadius(50)
-                                        .shimmering()
+                                    HStack{
+                                        TextBar(textLabel: "Number of Overs ?")
                                         
-                                }
+                                        Picker("Number of overs ?", selection: $matchvariables.numberOfOvers){
+                                            ForEach(1...50, id: \.self) {
+                                                Text("\($0) ")
+                                            }
+                                        }
+                                        .tint(.black)
+                                        .pickerStyle(.automatic)
+                                        .padding(3)
+                                        .background(.ultraThinMaterial)
+                                        .cornerRadius(15)
+                                        .padding(10)
+                                        
+                                    }
+                                    
+                                    HStack{
+                                        TextBar(textLabel: "Run for wide ?")
+                                        Toggle("", isOn: $matchvariables.runForWide)
+                                            .frame(width: 50)
+                                            .padding(10)
+                                    }
+                                    
+                                    HStack{
+                                        TextBar(textLabel: "Run for No Ball ?")
+                                        Toggle("", isOn: $matchvariables.runForNoBall)
+                                            .frame(width: 50)
+                                            .padding(10)
+                                    }
+                                    
+                                }   .padding(20)
+                                    .background(.ultraThinMaterial.opacity(0.5))
+                                    .border(.black, width: 0.15)
+                                    .cornerRadius(50)
                                 
-                            ).simultaneousGesture(TapGesture().onEnded {
-                                matchvariables.matchStarted.toggle()
-                            }).padding()
-                            
-                            Spacer()
-                            Spacer()
-                            
-                        }
-                     
-                        Spacer()
-                        
-                    }
-                    
-                    // Match Started
-                    
-                    else{
-                        
-                        VStack(alignment: .center){
-                            Spacer()
-                            
-                            NavigationLink(
-                                destination: Matchview(),
-                                label: {
-                                    Text("Resume Match")
-                                        .padding()
-                                        .font(Font.title)
-                                        .foregroundColor(.black)
-                                        .background(.ultraThickMaterial)
-                                        .border(Color.green, width:0.15)
-                                        .cornerRadius(50)
-                                        .shimmering()
-
-                                }
-                            ).simultaneousGesture(TapGesture().onEnded {
-                                print("NavigationLink clicked!")
-                            }).padding(20)
-                            
-                            
-                            Button("End Match?"){
-                                matchvariables.matchStartedAndCompleted.toggle()
+                                
+                                NavigationLink(
+                                    destination: Matchview(),
+                                    label: {
+                                        Text("Start Match")
+                                            .padding()
+                                            .font(Font.title)
+                                            .foregroundColor(.black)
+                                            .background(.ultraThickMaterial)
+                                            .border(Color.green, width:0.15)
+                                            .cornerRadius(50)
+                                            .shimmering()
+                                        
+                                    }
+                                    
+                                ).simultaneousGesture(TapGesture().onEnded {
+                                    matchvariables.matchStarted.toggle()
+                                }).padding()
+                                
+                                Spacer()
+                                Spacer()
+                                
                             }
-                            .buttonStyle(.borderedProminent)
                             
                             Spacer()
+                            
+                        }
+                        
+                        // Match Started
+                        
+                        else{
+                            
+                            VStack(alignment: .center){
+                                Spacer()
+                                
+                                NavigationLink(
+                                    destination: Matchview(),
+                                    label: {
+                                        Text("Resume Match")
+                                            .padding()
+                                            .font(Font.title)
+                                            .foregroundColor(.black)
+                                            .background(.ultraThickMaterial)
+                                            .border(Color.green, width:0.15)
+                                            .cornerRadius(50)
+                                            .shimmering()
+                                        
+                                    }
+                                ).simultaneousGesture(TapGesture().onEnded {
+                                    //                                print("NavigationLink clicked!")
+                                }).padding(20)
+                                
+                                
+                                Button("End Match?"){
+                                    matchvariables.matchStartedAndCompleted.toggle()
+                                }
+                                .buttonStyle(.borderedProminent)
+                                
+                                Spacer()
+                            }
                         }
                     }
-                    
+                    .frame(maxWidth: geometry.size.width * 1 )
                 }
                 .alert("Discard match?", isPresented: $matchvariables.matchStartedAndCompleted){
                     Button("End Match", role: .destructive) {
@@ -163,17 +168,16 @@ struct ContentView: View  {
                 }message: {
                     Text("Match progress will be lost")
                 }
-            }
-        }.preferredColorScheme(.light)
+                
+            }.preferredColorScheme(.light)
+        }
     }
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(MatchVariables())
+    
+ struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+                .environmentObject(MatchVariables())
+        }
     }
+    
 }
-
-

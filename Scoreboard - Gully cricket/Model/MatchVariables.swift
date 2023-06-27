@@ -9,6 +9,7 @@ import SwiftUI
 
 class MatchVariables : ObservableObject {
     
+    static let matchVariables = MatchVariables()
     
     @Published var numberOfOvers : Int = 1
     @Published var runForWide = true

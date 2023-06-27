@@ -10,18 +10,20 @@ import SwiftUI
 
 class Innings: ObservableObject{
     
+    let matchVariables = MatchVariables.matchVariables
+    
     @Published var inningsOutcome = [Outcome]() ;
     
     @Published var ballCounter:Int = 0;
     @Published var runs:Int = 0;
     @Published var wickets:Int = 0;
     
-    var previousOverRuns : Int = 0;
-    
+
     var currentOver : Int {
        (ballCounter/6) + 1;
     }
-
+    
+  // Adding outcome to innings
     
      func addOutcome(outcome outcomeOfBall:String, ballcounted: Bool){
         
@@ -30,8 +32,15 @@ class Innings: ObservableObject{
 //        print(inningsOutcome)
         
         switch(outcomeOfBall){
-        case "NB","Wd":
-            runs += 1
+            
+        case "Wd":
+            if(matchVariables.runForWide){
+                runs += 1
+            }
+        case "NB":
+            if(matchVariables.runForNoBall){
+                runs += 1
+            }
         case "W":
             if(ballcounted){
                 ballCounter += 1
@@ -68,7 +77,7 @@ class Innings: ObservableObject{
         if( inningsOutcome.count != 0){
             
             let  outcomeLast = inningsOutcome[inningsOutcome.count-1]
-//            print(outcomeLast)
+//          print(outcomeLast)
             let outCome = outcomeLast.outcome
             let isBallCounted = outcomeLast.isBallCounted
             
@@ -77,8 +86,14 @@ class Innings: ObservableObject{
             }
             switch(outCome){
                 
-            case "NB","Wd":
-                runs -= 1
+            case "Wd":
+                if(matchVariables.runForWide){
+                    runs -= 1
+                }
+            case "NB":
+                if(matchVariables.runForNoBall){
+                    runs -= 1
+                }
             case "W":
                 wickets -= 1
             default:
@@ -132,9 +147,10 @@ class Innings: ObservableObject{
     
     //Previous Over Outcome
     
-    func previousOver()->[String]{
+    func previousOver()->([String],Int){
         
       var previousOverOutcome = [String]()
+      var previousOverRuns : Int = 0;
         
         for outCome in inningsOutcome {
             
@@ -159,16 +175,22 @@ class Innings: ObservableObject{
                 switch(outCome.outcome){
                 case "1","2","3","4","5","6":
                     previousOverRuns = previousOverRuns + Int(outCome.outcome)!
-                case "Wd","NB":
-                    previousOverRuns = previousOverRuns + 1
+                case "Wd":
+                    if(matchVariables.runForWide){
+                        previousOverRuns = previousOverRuns + 1
+                    }
+                case "NB":
+                    if(matchVariables.runForNoBall){
+                        previousOverRuns = previousOverRuns + 1
+                    }
                 default:
                     previousOverRuns = previousOverRuns + 0
                 }
             }
         }
-        print(previousOverRuns)
+//        print(previousOverRuns)
         
-        return previousOverOutcome
+        return (previousOverOutcome,previousOverRuns)
         
     }
    

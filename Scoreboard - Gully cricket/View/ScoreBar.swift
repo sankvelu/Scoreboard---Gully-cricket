@@ -20,6 +20,7 @@ struct ScoreBar: View {
                 .background(.ultraThinMaterial)
                 .border(Color.black, width: 0.1)
                 .cornerRadius(10)
+                
         }
     }
 }
