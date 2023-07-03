@@ -12,7 +12,11 @@ class Innings: ObservableObject{
     
     let matchVariables = MatchVariables.matchVariables
     
-    @Published var inningsOutcome = [Outcome]() ;
+    @Published var inningsOutcome = [Outcome](){
+        didSet{
+            matchVariables.saveMatchVariables()
+        }
+    } ;
     
     @Published var ballCounter:Int = 0;
     @Published var runs:Int = 0;

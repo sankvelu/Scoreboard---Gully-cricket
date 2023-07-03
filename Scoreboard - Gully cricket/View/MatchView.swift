@@ -143,6 +143,7 @@ struct Matchview: View {
                                                 if(matchvariables.chaseStarted){
                                                     if(innings2.runs >= matchvariables.target || (innings2.ballCounter == matchvariables.numberOfOvers*6) ){
                                                         matchvariables.chaseCompleted.toggle()
+                                                        matchvariables.saveMatchVariables()
                                                         alertMatchCompleted.toggle()
                                                     }
                                                 }
@@ -192,6 +193,7 @@ struct Matchview: View {
                         })
                         .padding(20)
                         .background(.ultraThinMaterial.opacity(0.5))
+                        .background(Color(uiColor: UIColor(red: 0.82, green: 1.00, blue: 0.74, alpha: 1.00)).opacity(0.2))
                         .border(.black, width: 0.15)
                         .cornerRadius(50)
                         .padding(.horizontal)
@@ -252,6 +254,7 @@ struct Matchview: View {
                             VStack(alignment: .center){
                                 OutcomeButton(text: "Start 2nd innings") {
                                     matchvariables.chaseStarted.toggle()
+                                    matchvariables.saveMatchVariables()
 
                                 }
                                 .shimmering()
@@ -307,8 +310,9 @@ struct Matchview: View {
                     Text("Score defended succesfully - Match won by Team Batting 1st")
                 }
             }
-        }//View ends next line
+        }.onAppear(perform: matchvariables.variableStatus)
     }
+     
 }
 
 struct MatchView_Previews: PreviewProvider {

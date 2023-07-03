@@ -38,6 +38,7 @@ struct ContentView: View  {
                             .background(.thinMaterial)
                             .border(Color.green, width:0.15)
                             .cornerRadius(10)
+                            .background(Color(uiColor: UIColor(red: 0.82, green: 1.00, blue: 0.74, alpha: 1.00)).opacity(0.3))
                         
                         // Match not started
                         
@@ -96,14 +97,17 @@ struct ContentView: View  {
                                             .font(Font.title)
                                             .foregroundColor(.black)
                                             .background(.ultraThickMaterial)
+                                            .background(Color(uiColor: UIColor(red: 0.82, green: 1.00, blue: 0.74, alpha: 1.00)).opacity(0.5))
                                             .border(Color.green, width:0.15)
                                             .cornerRadius(50)
                                             .shimmering()
+                                            
                                         
                                     }
                                     
                                 ).simultaneousGesture(TapGesture().onEnded {
                                     matchvariables.matchStarted.toggle()
+                                    matchvariables.saveMatchVariables()
                                 }).padding()
                                 
                                 Spacer()
@@ -170,8 +174,8 @@ struct ContentView: View  {
                 }
                 
             }.preferredColorScheme(.light)
-        }
-    }
+        }.onAppear(perform: matchvariables.variableStatus)
+}
     
  struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
