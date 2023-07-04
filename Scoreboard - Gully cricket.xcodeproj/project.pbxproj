@@ -15,9 +15,12 @@
 		6A3308E12A3128A400950050 /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E02A3128A400950050 /* Outcome.swift */; };
 		6A3308E32A3128F300950050 /* Innings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E22A3128F300950050 /* Innings.swift */; };
 		6A4A98AC2A4192910054FEC5 /* PreviousOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */; };
+		6A517D542A5306CC003DE1BC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6A517D532A5306CC003DE1BC /* Realm */; };
+		6A517D562A5306CC003DE1BC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6A517D552A5306CC003DE1BC /* RealmSwift */; };
+		6A517D582A530729003DE1BC /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517D572A530729003DE1BC /* Migrator.swift */; };
+		6A517D5C2A531247003DE1BC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517D5B2A531247003DE1BC /* HomeView.swift */; };
 		6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62416F2A31BC8200758FBA /* ScoreBar.swift */; };
 		6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */; };
-		6A9264302A39BE1900AB4539 /* HexColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */; };
 		6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9379232A374A6600CEE5C7 /* TextBar.swift */; };
 		6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */; };
 		6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */; };
@@ -34,9 +37,11 @@
 		6A3308E02A3128A400950050 /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
 		6A3308E22A3128F300950050 /* Innings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Innings.swift; sourceTree = "<group>"; };
 		6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOver.swift; sourceTree = "<group>"; };
+		6A517D572A530729003DE1BC /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
+		6A517D5B2A531247003DE1BC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6A60ECF92A540D42004347C5 /* Scoreboard---Gully-cricket-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Scoreboard---Gully-cricket-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6A62416F2A31BC8200758FBA /* ScoreBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBar.swift; sourceTree = "<group>"; };
 		6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedHStackView.swift; sourceTree = "<group>"; };
-		6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorExtension.swift; sourceTree = "<group>"; };
 		6A9379232A374A6600CEE5C7 /* TextBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBar.swift; sourceTree = "<group>"; };
 		6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVariables.swift; sourceTree = "<group>"; };
 		6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeButton.swift; sourceTree = "<group>"; };
@@ -47,6 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A517D562A5306CC003DE1BC /* RealmSwift in Frameworks */,
+				6A517D542A5306CC003DE1BC /* Realm in Frameworks */,
 				6AF31B742A4088BB00CEE2F9 /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,8 +80,9 @@
 		6A1CE5752A2FACFD00E7C28F /* Scoreboard - Gully cricket */ = {
 			isa = PBXGroup;
 			children = (
+				6A60ECF92A540D42004347C5 /* Scoreboard---Gully-cricket-Info.plist */,
 				6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */,
-				6A92642F2A39BE1900AB4539 /* HexColorExtension.swift */,
+				6A517D572A530729003DE1BC /* Migrator.swift */,
 				6A3308DF2A31287D00950050 /* Model */,
 				6A62416E2A31BBFE00758FBA /* View */,
 				6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */,
@@ -105,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				6A1CE5782A2FACFD00E7C28F /* ContentView.swift */,
+				6A517D5B2A531247003DE1BC /* HomeView.swift */,
 				6A1BBA032A33138800E2F71B /* MatchView.swift */,
 				6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */,
 				6A9379232A374A6600CEE5C7 /* TextBar.swift */,
@@ -133,6 +142,8 @@
 			name = "Scoreboard - Gully cricket";
 			packageProductDependencies = (
 				6AF31B732A4088BB00CEE2F9 /* Shimmer */,
+				6A517D532A5306CC003DE1BC /* Realm */,
+				6A517D552A5306CC003DE1BC /* RealmSwift */,
 			);
 			productName = "Scoreboard - Gully cricket";
 			productReference = 6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */;
@@ -164,6 +175,7 @@
 			mainGroup = 6A1CE56A2A2FACFD00E7C28F;
 			packageReferences = (
 				6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				6A517D522A5306CC003DE1BC /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 6A1CE5742A2FACFD00E7C28F /* Products */;
 			projectDirPath = "";
@@ -192,14 +204,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A3308E12A3128A400950050 /* Outcome.swift in Sources */,
+				6A517D5C2A531247003DE1BC /* HomeView.swift in Sources */,
 				6A1CE5792A2FACFD00E7C28F /* ContentView.swift in Sources */,
 				6A4A98AC2A4192910054FEC5 /* PreviousOver.swift in Sources */,
 				6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */,
 				6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */,
 				6A1CE5772A2FACFD00E7C28F /* Scoreboard.swift in Sources */,
 				6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */,
-				6A9264302A39BE1900AB4539 /* HexColorExtension.swift in Sources */,
 				6A1BBA042A33138800E2F71B /* MatchView.swift in Sources */,
+				6A517D582A530729003DE1BC /* Migrator.swift in Sources */,
 				6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */,
 				6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */,
 				6A3308E32A3128F300950050 /* Innings.swift in Sources */,
@@ -334,9 +347,9 @@
 				DEVELOPMENT_TEAM = F2KLL8T45Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Scoreboard---Gully-cricket-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,9 +376,9 @@
 				DEVELOPMENT_TEAM = F2KLL8T45Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Scoreboard---Gully-cricket-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,6 +418,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6A517D522A5306CC003DE1BC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
@@ -416,6 +437,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6A517D532A5306CC003DE1BC /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A517D522A5306CC003DE1BC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		6A517D552A5306CC003DE1BC /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A517D522A5306CC003DE1BC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		6AF31B732A4088BB00CEE2F9 /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;

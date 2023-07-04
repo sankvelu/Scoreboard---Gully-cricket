@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct Matchview: View {
     
     @EnvironmentObject var matchvariables: MatchVariables
-    @StateObject var innings1 = Innings()
-    @StateObject var innings2 = Innings()
+    @ObservedRealmObject var innings : Innings
+//    @StateObject var innings1 = Innings()
+//    @StateObject var innings2 = Innings()
     
     // Outcomes
     let outcomeNumbers:[String] = ["0","1","2","3","4","5","6"];
@@ -55,25 +57,15 @@ struct Matchview: View {
                             
                             HStack(spacing:20){
                                 
-                                ScoreBar(leftComp: "Overs", rightComp:( matchvariables.chaseStarted ?
-                                                                        innings2.getOversInString(totalOvers:String(matchvariables.numberOfOvers)):
-                                                                            innings1.getOversInString(totalOvers:String(matchvariables.numberOfOvers))
-                                                                      )
-                                )
+                                ScoreBar(leftComp: "Overs", rightComp: innings.getOversInString(totalOvers: String(matchvariables.numberOfOvers)) )
                                 
-                                ScoreBar(leftComp: "Wickets", rightComp: String(
-                                    (matchvariables.chaseStarted ? innings2.wickets : innings1.wickets)
-                                )
-                                )
+                                ScoreBar(leftComp: "Wickets", rightComp: String(innings.wickets))
+                                
                             }
-                            
-                            
+                      
                             HStack(spacing:20){
                                 
-                                ScoreBar(leftComp: "Runs", rightComp: String( matchvariables.chaseStarted ?
-                                                                              innings2.runs :
-                                                                                innings1.runs )
-                                )
+                                ScoreBar(leftComp: "Runs", rightComp: String(innings.runs))
                                 
                                 if(matchvariables.chaseStarted){
                                     ScoreBar(leftComp: "Target", rightComp: String(matchvariables.target))
@@ -94,17 +86,18 @@ struct Matchview: View {
                                         if(!(matchvariables.inningsCompleted && !matchvariables.chaseStarted)){
                                             if( !matchvariables.chaseCompleted ){
                                                 
-                                                matchvariables.chaseStarted ?
-                                                innings2.addOutcome(outcome: num , ballcounted: !isBallNotCounted) :
-                                                innings1.addOutcome(outcome: num , ballcounted: !isBallNotCounted)
+                                                addOutcome(outcome: num , ballcounted: !isBallNotCounted)
+                             
                                                 
                                                 isBallNotCounted = false
                                                 
                                                 if(matchvariables.chaseStarted){
-                                                    if(innings2.runs >= matchvariables.target || (innings2.ballCounter == matchvariables.numberOfOvers*6)){
-                                                        //                                                    print("Match completed")
+                                                    if(innings.runs >= matchvariables.target || (innings.ballCounter == matchvariables.numberOfOvers*6)){
+                                                        
                                                         matchvariables.chaseCompleted.toggle()
+                                                        matchvariables.saveMatchVariables()
                                                         alertMatchCompleted.toggle()
+                                                        
                                                     }
                                                 }
                                             }
@@ -124,24 +117,19 @@ struct Matchview: View {
                                                 switch(num){
                                                     
                                                 case "No Ball":
-                                                    matchvariables.chaseStarted ?
-                                                    innings2.addOutcome(outcome:"NB", ballcounted:false) :
-                                                    innings1.addOutcome(outcome:"NB", ballcounted:false)
+                                                    addOutcome(outcome:"NB", ballcounted:false)
+                                              
                                                 case "Wide":
-                                                    matchvariables.chaseStarted ?
-                                                    innings2.addOutcome(outcome: "Wd", ballcounted:false) :
-                                                    innings1.addOutcome(outcome: "Wd", ballcounted:false)
+                                                    addOutcome(outcome: "Wd", ballcounted:false)
                                                 default:
-                                                    matchvariables.chaseStarted ?
-                                                    innings2.addOutcome(outcome: "W", ballcounted:!isBallNotCounted) :
-                                                    innings1.addOutcome(outcome: "W", ballcounted:!isBallNotCounted)
-                                                    
-                                                }
+                                                    addOutcome(outcome: "W", ballcounted:!isBallNotCounted)
+                                               }
                                                 
                                                 isBallNotCounted = false
                                                 
                                                 if(matchvariables.chaseStarted){
-                                                    if(innings2.runs >= matchvariables.target || (innings2.ballCounter == matchvariables.numberOfOvers*6) ){
+                                                    if(innings.runs >= matchvariables.target || (innings.ballCounter == matchvariables.numberOfOvers*6) ){
+                                                        
                                                         matchvariables.chaseCompleted.toggle()
                                                         matchvariables.saveMatchVariables()
                                                         alertMatchCompleted.toggle()
@@ -164,18 +152,18 @@ struct Matchview: View {
                                     .cornerRadius(15)
                                 
                                 OutcomeButton(text: "UNDO") {
-                                    matchvariables.chaseStarted ?
-                                    innings2.undoOutcome() :
-                                    innings1.undoOutcome()
+                                    undoOutcome()
                                     
                                     // Case 1st innings over
                                     if(matchvariables.inningsCompleted && !matchvariables.chaseStarted){
                                         matchvariables.inningsCompleted.toggle()
+                                        matchvariables.saveMatchVariables()
                                     }
                                     
                                     // Case match over
                                     if(matchvariables.chaseCompleted){
                                         matchvariables.chaseCompleted.toggle()
+                                        matchvariables.saveMatchVariables()
                                     }
                                     
                                 }
@@ -183,10 +171,11 @@ struct Matchview: View {
                         }.simultaneousGesture(TapGesture().onEnded {
                             if((!matchvariables.inningsCompleted)&&(!matchvariables.chaseStarted)){
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    if(innings1.ballCounter == matchvariables.numberOfOvers*6){
+                                    if(innings.ballCounter == matchvariables.numberOfOvers*6){
                                         alertInningsCompleted.toggle()
                                         matchvariables.inningsCompleted.toggle()
-                                        matchvariables.target = innings1.runs + 1
+                                        matchvariables.target = innings.runs + 1
+                                        matchvariables.saveMatchVariables()
                                     }
                                 }
                             }
@@ -222,9 +211,7 @@ struct Matchview: View {
                                 .cornerRadius(10)
                                 .sheet(isPresented: $showingPreviousOver) {
                                     
-                                    let (previousOverOutcome,previousOverRuns) = matchvariables.chaseStarted ?
-                                    innings2.previousOver():
-                                    innings1.previousOver();
+                                    let (previousOverOutcome,previousOverRuns) = innings.previousOver()
                                     
                                     PreviousOver(previousOverOutcome: previousOverOutcome, previousOverRuns: previousOverRuns)
                                 }
@@ -243,8 +230,7 @@ struct Matchview: View {
                             .background(.thinMaterial)
                             .cornerRadius(20)
                             
-                            WrappedHStackView(words: matchvariables.chaseStarted ? innings2.thisOver(): innings1.thisOver()
-                            )
+                            WrappedHStackView(words: innings.thisOver())
                             .padding(.bottom)
                         }
                         
@@ -290,7 +276,7 @@ struct Matchview: View {
                     
                 }
             }message: {
-                Text("Target: \(innings1.runs + 1)")
+                Text("Target: \(innings.runs + 1)")
             }
             
             //  Match completed Alert
@@ -300,10 +286,10 @@ struct Matchview: View {
                     
                 }
             }message: {
-                if(innings2.runs >= matchvariables.target){
+                if(innings.runs >= matchvariables.target){
                     Text("Target chased succesfully - Match won by Team Batting 2nd")
                 }
-                else if(innings2.runs == matchvariables.target-1){
+                else if(innings.runs == matchvariables.target-1){
                     Text("Match Drawn :)")
                 }
                 else{
@@ -311,13 +297,110 @@ struct Matchview: View {
                 }
             }
         }.onAppear(perform: matchvariables.variableStatus)
+        
     }
      
+    // -------------------------------------- Functions starts ------------------------------------
+    
+    // 1. func addOutcome
+    
+    func addOutcome(outcome outcomeOfBall:String, ballcounted: Bool){
+        
+        
+        let outcome = Outcome()
+        outcome.isBallCounted = ballcounted
+        outcome.outcome = outcomeOfBall
+        outcome.over = innings.currentOver
+        
+        $innings.inningsOutcome.append(outcome)
+        
+        //        inningsOutcome.append(Outcome(outcome: outcomeOfBall, isBallCounted: ballcounted, over: currentOver))
+        
+        
+        let realm = try! Realm()
+        if let innings = realm.object(ofType: Innings.self, forPrimaryKey: innings.id){
+            try! realm.write{
+                
+                switch(outcomeOfBall){
+                    
+                case "Wd":
+                    if(matchvariables.runForWide){
+                        innings.runs += 1
+                    }
+                case "NB":
+                    if(matchvariables.runForNoBall){
+                        innings.runs += 1
+                    }
+                case "W":
+                    if(ballcounted){
+                        innings.ballCounter += 1
+                        innings.wickets += 1
+                    }
+                    else{
+                        innings.wickets += 1
+                    }
+                default:
+                    if(ballcounted){
+                        innings.ballCounter += 1;
+                        innings.runs = innings.runs + (Int(outcomeOfBall) ?? 0)
+                    }
+                    else {
+                        innings.runs = innings.runs + (Int(outcomeOfBall) ?? 0)
+                    }
+                }
+            }
+        }
+    }
+    
+    // 2. func undoOutcome
+    
+    func undoOutcome(){
+        
+        if( innings.inningsOutcome.count != 0){
+            
+            let  outcomeLast = innings.inningsOutcome[innings.inningsOutcome.count-1]
+            //          print(outcomeLast)
+            let outCome = outcomeLast.outcome
+            let isBallCounted = outcomeLast.isBallCounted
+            
+            let realm = try! Realm()
+            if let innings = realm.object(ofType: Innings.self, forPrimaryKey: innings.id){
+                try! realm.write{
+                    
+                    
+                    if(isBallCounted){
+                        innings.ballCounter -= 1;
+                    }
+                    switch(outCome){
+                        
+                    case "Wd":
+                        if(matchvariables.runForWide){
+                            innings.runs -= 1
+                        }
+                    case "NB":
+                        if(matchvariables.runForNoBall){
+                            innings.runs -= 1
+                        }
+                    case "W":
+                        innings.wickets -= 1
+                    default:
+                        innings.runs = innings.runs - Int(outCome)!
+                    }
+                    
+                    realm.delete(innings.inningsOutcome.last!)
+                    //                   inningsOutcome.removeLast()
+                    
+                    return
+                }
+            }
+        }
+    }
+    
 }
 
 struct MatchView_Previews: PreviewProvider {
     static var previews: some View {
-        Matchview()
+        Matchview(innings: Innings())
             .environmentObject(MatchVariables())
     }
 }
