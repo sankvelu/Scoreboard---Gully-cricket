@@ -62,7 +62,7 @@ struct Matchview: View {
                                 ScoreBar(leftComp: "Wickets", rightComp: String(innings.wickets))
                                 
                             }
-                      
+                            
                             HStack(spacing:20){
                                 
                                 ScoreBar(leftComp: "Runs", rightComp: String(innings.runs))
@@ -87,7 +87,7 @@ struct Matchview: View {
                                             if( !matchvariables.chaseCompleted ){
                                                 
                                                 addOutcome(outcome: num , ballcounted: !isBallNotCounted)
-                             
+                                                
                                                 
                                                 isBallNotCounted = false
                                                 
@@ -118,12 +118,12 @@ struct Matchview: View {
                                                     
                                                 case "No Ball":
                                                     addOutcome(outcome:"NB", ballcounted:false)
-                                              
+                                                    
                                                 case "Wide":
                                                     addOutcome(outcome: "Wd", ballcounted:false)
                                                 default:
                                                     addOutcome(outcome: "W", ballcounted:!isBallNotCounted)
-                                               }
+                                                }
                                                 
                                                 isBallNotCounted = false
                                                 
@@ -231,7 +231,7 @@ struct Matchview: View {
                             .cornerRadius(20)
                             
                             WrappedHStackView(words: innings.thisOver())
-                            .padding(.bottom)
+                                .padding(.bottom)
                         }
                         
                         // Innings or Match completed stages
@@ -241,7 +241,7 @@ struct Matchview: View {
                                 OutcomeButton(text: "Start 2nd innings") {
                                     matchvariables.chaseStarted.toggle()
                                     matchvariables.saveMatchVariables()
-
+                                    
                                 }
                                 .shimmering()
                                 .background(.thinMaterial)
@@ -296,7 +296,8 @@ struct Matchview: View {
                     Text("Score defended succesfully - Match won by Team Batting 1st")
                 }
             }
-        }.onAppear(perform: matchvariables.variableStatus)
+        }
+//        .onAppear(perform: matchvariables.variableStatus)
         
     }
      

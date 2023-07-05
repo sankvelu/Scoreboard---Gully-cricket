@@ -57,6 +57,7 @@ class Innings: Object, Identifiable{
     func thisOver()->[String]{
         
         var thisOverOutcome = [String]()
+        var x = 0
         
         for outCome in inningsOutcome {
             
@@ -65,20 +66,21 @@ class Innings: Object, Identifiable{
                 if(!outCome.isBallCounted){
                     
                     switch(outCome.outcome){
-                    case "1","2","3","4","5","6","W" :
-                        thisOverOutcome.append(outCome.outcome+"NC")
+                    case "0","1","2","3","4","5","6","W" :
+                        thisOverOutcome.append(outCome.outcome+"NC"+"X\(x)")
                     default:
-                        thisOverOutcome.append(outCome.outcome)
+                        thisOverOutcome.append(outCome.outcome+"X\(x)")
                         
                     }
                 }else{
-                    thisOverOutcome.append(outCome.outcome)
+                    thisOverOutcome.append(outCome.outcome+"X\(x)")
                 }
-                
+                x = x+1;
             }
         }
         return thisOverOutcome
     }
+    
     
     //Previous Over Outcome
     
@@ -86,6 +88,7 @@ class Innings: Object, Identifiable{
         
       var previousOverOutcome = [String]()
       var previousOverRuns : Int = 0;
+        var x = 0
         
         for outCome in inningsOutcome {
             
@@ -94,14 +97,14 @@ class Innings: Object, Identifiable{
                 if(!outCome.isBallCounted){
                     
                     switch(outCome.outcome){
-                    case "1","2","3","4","5","6","W" :
-                        previousOverOutcome.append(outCome.outcome+"NC")
+                    case "0","1","2","3","4","5","6","W" :
+                        previousOverOutcome.append(outCome.outcome+"NC"+"X\(x)")
                     default:
-                        previousOverOutcome.append(outCome.outcome)
+                        previousOverOutcome.append(outCome.outcome+"X\(x)")
                         
                     }
                 }else{
-                    previousOverOutcome.append(outCome.outcome)
+                    previousOverOutcome.append(outCome.outcome+"X\(x)")
                 }
                 
                 switch(outCome.outcome){
@@ -119,6 +122,7 @@ class Innings: Object, Identifiable{
                     previousOverRuns = previousOverRuns + 0
                 }
             }
+            x = x+1;
         }
        return (previousOverOutcome,previousOverRuns)
    }

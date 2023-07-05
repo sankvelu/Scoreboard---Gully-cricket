@@ -45,9 +45,6 @@ class MatchVariables : ObservableObject {
         matchStartedAndCompleted = defaults.bool(forKey: "matchStartedAndCompleted")
         
     }
-    func variableStatus(){
-      print(matchStarted, inningsCompleted, chaseStarted, chaseCompleted, matchStartedAndCompleted, "Test")
- }
    func saveMatchVariables() {
         defaults.set(numberOfOvers, forKey: "numberOfOvers")
         defaults.set(runForWide, forKey: "runForWide")

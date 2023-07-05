@@ -61,7 +61,8 @@ struct PreviousOver: View {
                     
                     Spacer()
                     Spacer()
-                }.padding(50)
+                }
+                .padding(50)
             }
             .toolbar{
                 Button("x Close ") {
@@ -76,6 +77,7 @@ struct PreviousOver: View {
         }
     }
 }
+
 
 struct PreviousOver_Previews: PreviewProvider {
     static var previews: some View {

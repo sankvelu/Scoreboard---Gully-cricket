@@ -31,7 +31,6 @@ struct HomeView: View {
             matchvariables.matchStarted.toggle()
             matchvariables.saveMatchVariables()
         }
-        matchvariables.variableStatus()
     }
     
 }

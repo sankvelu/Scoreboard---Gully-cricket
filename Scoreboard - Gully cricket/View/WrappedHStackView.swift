@@ -17,6 +17,7 @@ struct WrappedHStackView: View {
     }
 }
 
+
 struct TagsView: View {
     let colors: [String: Color] = [ "NB":.yellow, "Wd": .yellow, "W": .red ]
     
@@ -41,9 +42,9 @@ struct TagsView: View {
             label.text = word
             label.sizeToFit()
             
-            let labelWidth = label.frame.size.width + 32
+            let labelWidth = label.frame.size.width + 10
             
-            if (width + labelWidth + 55) < screenWidth {
+            if (width + labelWidth + 30) < screenWidth {
                 width += labelWidth
                 tempItems.append(word)
             } else {
@@ -67,8 +68,13 @@ struct TagsView: View {
             ForEach(groupedItems, id: \.self) { subItems in
                 HStack {
                     ForEach(subItems, id: \.self) { word in
-                        if(word.contains("NC")){
-                            let modifiedText = word.replacingOccurrences(of: "NC", with: "")
+                        
+                        let text = String(word.split(separator: "X").first!)
+                        
+                        if(text.contains("NC")){
+                            
+                            let modifiedText = text.replacingOccurrences(of: "NC", with: "")
+                            
                             Text(modifiedText)
                                 .fixedSize()
                                 .font(Font.caption)
@@ -82,13 +88,13 @@ struct TagsView: View {
                             
                         }
                         else{
-                            Text(word)
+                            Text(text)
                                 .fixedSize()
                                 .font(Font.caption)
                                 .fontWeight(.bold)
                                 .frame(width:15,height:15)
                                 .padding(15)
-                                .background(colors[word, default: Color("Voilet")])
+                                .background(colors[text, default: Color("Voilet")])
                                 .foregroundColor(.white)
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.white,lineWidth: 1))

@@ -193,7 +193,8 @@ struct ContentView: View  {
                 }
                 
             }.preferredColorScheme(.light)
-        }.onAppear(perform: matchvariables.variableStatus)
+        }
+//        .onAppear(perform: matchvariables.variableStatus)
     }
     func clearRealm(){
         
@@ -201,7 +202,6 @@ struct ContentView: View  {
         try! realm.write {
             // Delete all objects from the realm.
             realm.deleteAll()
-            print("All realm objects deleted!")
         }
     }
     
