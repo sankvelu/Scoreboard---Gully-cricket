@@ -7,10 +7,12 @@
 
 import SwiftUI
 import Shimmer
+import RealmSwift
 
 struct ContentView: View  {
     
     @EnvironmentObject var matchvariables: MatchVariables
+    @ObservedResults(Innings.self) var innings
     
     var body: some View {
         
@@ -72,6 +74,10 @@ struct ContentView: View  {
                                     HStack{
                                         TextBar(textLabel: "Run for wide ?")
                                         Toggle("", isOn: $matchvariables.runForWide)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 50)
+                                                    .stroke(Color.black, lineWidth: 0.4)
+                                            )
                                             .frame(width: 50)
                                             .padding(10)
                                     }
@@ -79,6 +85,10 @@ struct ContentView: View  {
                                     HStack{
                                         TextBar(textLabel: "Run for No Ball ?")
                                         Toggle("", isOn: $matchvariables.runForNoBall)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 50)
+                                                    .stroke(Color.black, lineWidth: 0.4)
+                                            )
                                             .frame(width: 50)
                                             .padding(10)
                                     }
@@ -90,7 +100,7 @@ struct ContentView: View  {
                                 
                                 
                                 NavigationLink(
-                                    destination: Matchview(),
+                                    destination: HomeView(),
                                     label: {
                                         Text("Start Match")
                                             .padding()
@@ -101,13 +111,17 @@ struct ContentView: View  {
                                             .border(Color.green, width:0.15)
                                             .cornerRadius(50)
                                             .shimmering()
-                                            
                                         
+                                        
+                                    })
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                    if innings.isEmpty{
+                                        let innings1 = Innings()
+                                        $innings.append(innings1)
+                                        let innings2 = Innings()
+                                        $innings.append(innings2)
                                     }
                                     
-                                ).simultaneousGesture(TapGesture().onEnded {
-                                    matchvariables.matchStarted.toggle()
-                                    matchvariables.saveMatchVariables()
                                 }).padding()
                                 
                                 Spacer()
@@ -127,7 +141,7 @@ struct ContentView: View  {
                                 Spacer()
                                 
                                 NavigationLink(
-                                    destination: Matchview(),
+                                    destination: HomeView(),
                                     label: {
                                         Text("Resume Match")
                                             .padding()
@@ -167,6 +181,10 @@ struct ContentView: View  {
                         if(matchvariables.chaseCompleted){
                             matchvariables.chaseCompleted.toggle()
                         }
+                        matchvariables.saveMatchVariables()
+                        
+                        clearRealm()
+                        
                     }.cornerRadius(20)
                     
                 }message: {
@@ -174,14 +192,26 @@ struct ContentView: View  {
                 }
                 
             }.preferredColorScheme(.light)
-        }.onAppear(perform: matchvariables.variableStatus)
-}
+        }.navigationViewStyle(StackNavigationViewStyle())
+//        .onAppear(perform: matchvariables.variableStatus)
+    }
     
- struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-                .environmentObject(MatchVariables())
+    private func clearRealm(){
+        
+        guard let realm = try? Realm() else{return}
+        try? realm.write {
+            // Delete all objects from the realm.
+            realm.deleteAll()
         }
     }
     
 }
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(MatchVariables())
+    }
+}
+
+

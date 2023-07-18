@@ -61,7 +61,8 @@ struct PreviousOver: View {
                     
                     Spacer()
                     Spacer()
-                }.padding(50)
+                }
+                .padding(50)
             }
             .toolbar{
                 Button("x Close ") {
@@ -73,12 +74,13 @@ struct PreviousOver: View {
                 .foregroundColor(.black)
                 .cornerRadius(30)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
+
 struct PreviousOver_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousOver(previousOverOutcome: ["NB","Wd","W","1","6","3"], previousOverRuns: 12)
+        PreviousOver(previousOverOutcome: ["NB","Wd","W","1","6","3"],previousOverRuns: 12)
     }
 }

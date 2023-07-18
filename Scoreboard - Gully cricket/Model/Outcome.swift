@@ -6,11 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Outcome {
+class Outcome: Object, Identifiable {
+    @Persisted(primaryKey: true) var id: ObjectId
     
-    var outcome : String
-    var isBallCounted : Bool
-    var over : Int
+    @Persisted var outcome: String
+    @Persisted var isBallCounted: Bool
+    @Persisted var over: Int
+    
+    override class func primaryKey() -> String? {
+        "id"
+    }
    
 }

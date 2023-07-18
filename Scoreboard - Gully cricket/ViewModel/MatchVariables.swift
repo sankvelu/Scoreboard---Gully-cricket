@@ -10,14 +10,12 @@ import SwiftUI
 class MatchVariables : ObservableObject {
     
     static let matchVariables = MatchVariables()
-    
-    
     let defaults = UserDefaults.standard;
     
-    @Published var numberOfOvers : Int = 5
+    @Published var numberOfOvers : Int
     @Published var runForWide : Bool
     @Published var runForNoBall : Bool
-    @Published var target:Int = 0
+    @Published var target:Int
     
     @Published var matchStarted = false
     @Published var inningsCompleted = false
@@ -29,7 +27,6 @@ class MatchVariables : ObservableObject {
         }
     }
     
-    
     init(){
         if(defaults.integer(forKey: "numberOfOvers") == 0){
             numberOfOvers = 5
@@ -37,6 +34,7 @@ class MatchVariables : ObservableObject {
         else {
             numberOfOvers = defaults.integer(forKey: "numberOfOvers")
         }
+       
         runForWide = defaults.bool(forKey: "runForWide")
         runForNoBall = defaults.bool(forKey: "runForNoBall")
         target = defaults.integer(forKey: "target")
@@ -48,13 +46,8 @@ class MatchVariables : ObservableObject {
         matchStartedAndCompleted = defaults.bool(forKey: "matchStartedAndCompleted")
         
     }
-    func variableStatus(){
-        
-        print(matchStarted, inningsCompleted, chaseStarted, chaseCompleted, matchStartedAndCompleted)
-        
-    }
     
-    func saveMatchVariables() {
+   func saveMatchVariables() {
         defaults.set(numberOfOvers, forKey: "numberOfOvers")
         defaults.set(runForWide, forKey: "runForWide")
         defaults.set(runForNoBall, forKey: "runForNoBall")
@@ -66,14 +59,5 @@ class MatchVariables : ObservableObject {
         defaults.set(chaseStarted, forKey: "chaseStarted")
         defaults.set(chaseCompleted , forKey: "chaseCompleted ")
         defaults.set(matchStartedAndCompleted, forKey: "matchStartedAndCompleted")
-        
-        
-    }
-    
-    
-    
-    
-    
-    
-    
+  }
 }
