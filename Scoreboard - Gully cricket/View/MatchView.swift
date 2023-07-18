@@ -12,29 +12,25 @@ struct Matchview: View {
     
     @EnvironmentObject var matchvariables: MatchVariables
     @ObservedRealmObject var innings : Innings
-//    @StateObject var innings1 = Innings()
-//    @StateObject var innings2 = Innings()
     
     // Outcomes
     let outcomeNumbers:[String] = ["0","1","2","3","4","5","6"];
     let outcomeOthers:[String] = ["No Ball", "Wide", "Wicket"];
     
     //Flags
-    @State private var isBallNotCounted:Bool = false;
+    @State private var isBallNotCounted = false;
     @State private var showingPreviousOver = false;
     @State private var alertInningsCompleted = false;
     @State private var alertMatchCompleted = false;
     
     @State private var isBouncing = false
-    
-    
-    
+
     var body: some View {
         
         NavigationView{
             
             ZStack{
-                
+             
                 Image("Grass")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -87,12 +83,12 @@ struct Matchview: View {
                                             if( !matchvariables.chaseCompleted ){
                                                 
                                                 addOutcome(outcome: num , ballcounted: !isBallNotCounted)
-                                                
-                                                
                                                 isBallNotCounted = false
                                                 
                                                 if(matchvariables.chaseStarted){
-                                                    if(innings.runs >= matchvariables.target || (innings.ballCounter == matchvariables.numberOfOvers*6)){
+                                                    if(innings.runs >= matchvariables.target ||
+                                                       (innings.ballCounter ==
+                                                        matchvariables.numberOfOvers*6)){
                                                         
                                                         matchvariables.chaseCompleted.toggle()
                                                         matchvariables.saveMatchVariables()
@@ -249,9 +245,8 @@ struct Matchview: View {
                                 .offset(y: -20)
                                 .scaleEffect(isBouncing ? 1.2 : 1.0)
                                 .animation(Animation.spring(response: 2.5, dampingFraction: 0.8, blendDuration: 0.5).repeatForever(autoreverses: false),value: isBouncing)
-                                .onAppear {
-                                    isBouncing = true // Start the bouncing animation when the view appears
-                                }
+                            }.onAppear {
+                                isBouncing = true // Start the bouncing animation when the view appears
                             }
                             
                         }
@@ -297,17 +292,16 @@ struct Matchview: View {
                 }
             }
         }
-//        .onAppear(perform: matchvariables.variableStatus)
+        //        .onAppear(perform: matchvariables.variableStatus)
         
     }
-     
+    
     // -------------------------------------- Functions starts ------------------------------------
     
     // 1. func addOutcome
     
-    func addOutcome(outcome outcomeOfBall:String, ballcounted: Bool){
-        
-        
+   private func addOutcome(outcome outcomeOfBall:String, ballcounted: Bool){
+
         let outcome = Outcome()
         outcome.isBallCounted = ballcounted
         outcome.outcome = outcomeOfBall
@@ -315,39 +309,37 @@ struct Matchview: View {
         
         $innings.inningsOutcome.append(outcome)
         
-        //        inningsOutcome.append(Outcome(outcome: outcomeOfBall, isBallCounted: ballcounted, over: currentOver))
-        
-        
-        let realm = try! Realm()
-        if let innings = realm.object(ofType: Innings.self, forPrimaryKey: innings.id){
-            try! realm.write{
+        guard let realm = try? Realm()
+        else{ return }
+        guard let innings = realm.object(ofType: Innings.self, forPrimaryKey: innings.id)
+        else { return }
+        try? realm.write{
+            
+            switch(outcomeOfBall){
                 
-                switch(outcomeOfBall){
-                    
-                case "Wd":
-                    if(matchvariables.runForWide){
-                        innings.runs += 1
-                    }
-                case "NB":
-                    if(matchvariables.runForNoBall){
-                        innings.runs += 1
-                    }
-                case "W":
-                    if(ballcounted){
-                        innings.ballCounter += 1
-                        innings.wickets += 1
-                    }
-                    else{
-                        innings.wickets += 1
-                    }
-                default:
-                    if(ballcounted){
-                        innings.ballCounter += 1;
-                        innings.runs = innings.runs + (Int(outcomeOfBall) ?? 0)
-                    }
-                    else {
-                        innings.runs = innings.runs + (Int(outcomeOfBall) ?? 0)
-                    }
+            case "Wd":
+                if(matchvariables.runForWide){
+                    innings.runs += 1
+                }
+            case "NB":
+                if(matchvariables.runForNoBall){
+                    innings.runs += 1
+                }
+            case "W":
+                if(ballcounted){
+                    innings.ballCounter += 1
+                    innings.wickets += 1
+                }
+                else{
+                    innings.wickets += 1
+                }
+            default:
+                if(ballcounted){
+                    innings.ballCounter += 1;
+                    innings.runs = innings.runs + (Int(outcomeOfBall) ?? 0)
+                }
+                else {
+                    innings.runs = innings.runs + (Int(outcomeOfBall) ?? 0)
                 }
             }
         }
@@ -355,49 +347,49 @@ struct Matchview: View {
     
     // 2. func undoOutcome
     
-    func undoOutcome(){
+    private func undoOutcome(){
+    
+    if( innings.inningsOutcome.count != 0){
         
-        if( innings.inningsOutcome.count != 0){
-            
-            let  outcomeLast = innings.inningsOutcome[innings.inningsOutcome.count-1]
-            //          print(outcomeLast)
-            let outCome = outcomeLast.outcome
-            let isBallCounted = outcomeLast.isBallCounted
-            
-            let realm = try! Realm()
-            if let innings = realm.object(ofType: Innings.self, forPrimaryKey: innings.id){
-                try! realm.write{
-                    
-                    
-                    if(isBallCounted){
-                        innings.ballCounter -= 1;
-                    }
-                    switch(outCome){
-                        
-                    case "Wd":
-                        if(matchvariables.runForWide){
-                            innings.runs -= 1
-                        }
-                    case "NB":
-                        if(matchvariables.runForNoBall){
-                            innings.runs -= 1
-                        }
-                    case "W":
-                        innings.wickets -= 1
-                    default:
-                        innings.runs = innings.runs - Int(outCome)!
-                    }
-                    
-                    realm.delete(innings.inningsOutcome.last!)
-                    //                   inningsOutcome.removeLast()
-                    
-                    return
-                }
+        let  outcomeLast = innings.inningsOutcome[innings.inningsOutcome.count-1]
+        let outCome = outcomeLast.outcome
+        let isBallCounted = outcomeLast.isBallCounted
+        
+        guard let realm = try? Realm()
+        else{ return }
+        guard let innings = realm.object(ofType: Innings.self, forPrimaryKey: innings.id)
+        else{ return }
+        try? realm.write{
+         
+            if(isBallCounted){
+                innings.ballCounter -= 1;
             }
+            switch(outCome){
+                
+            case "Wd":
+                if(matchvariables.runForWide){
+                    innings.runs -= 1
+                }
+            case "NB":
+                if(matchvariables.runForNoBall){
+                    innings.runs -= 1
+                }
+            case "W":
+                innings.wickets -= 1
+            default:
+                innings.runs = innings.runs - Int(outCome)!
+            }
+            
+            realm.delete(innings.inningsOutcome.last!)
+            //                   inningsOutcome.removeLast()
+            
+            return
         }
     }
+}
     
 }
+
 
 struct MatchView_Previews: PreviewProvider {
     static var previews: some View {

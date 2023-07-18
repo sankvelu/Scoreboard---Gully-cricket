@@ -23,6 +23,7 @@
 		6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */; };
 		6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9379232A374A6600CEE5C7 /* TextBar.swift */; };
 		6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */; };
+		6AD97C3E2A66852500666A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD97C3D2A66852500666A6F /* LaunchScreen.storyboard */; };
 		6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */; };
 		6AF31B742A4088BB00CEE2F9 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF31B732A4088BB00CEE2F9 /* Shimmer */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedHStackView.swift; sourceTree = "<group>"; };
 		6A9379232A374A6600CEE5C7 /* TextBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBar.swift; sourceTree = "<group>"; };
 		6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVariables.swift; sourceTree = "<group>"; };
+		6AD97C3D2A66852500666A6F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A0C13D82A658BE300D0E84F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */,
+				6A3308E22A3128F300950050 /* Innings.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6A1CE56A2A2FACFD00E7C28F = {
 			isa = PBXGroup;
 			children = (
@@ -80,12 +91,13 @@
 		6A1CE5752A2FACFD00E7C28F /* Scoreboard - Gully cricket */ = {
 			isa = PBXGroup;
 			children = (
-				6A60ECF92A540D42004347C5 /* Scoreboard---Gully-cricket-Info.plist */,
 				6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */,
 				6A517D572A530729003DE1BC /* Migrator.swift */,
 				6A3308DF2A31287D00950050 /* Model */,
+				6A0C13D82A658BE300D0E84F /* ViewModel */,
 				6A62416E2A31BBFE00758FBA /* View */,
 				6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */,
+				6A60ECF92A540D42004347C5 /* Scoreboard---Gully-cricket-Info.plist */,
 				6A1CE57C2A2FACFD00E7C28F /* Preview Content */,
 			);
 			path = "Scoreboard - Gully cricket";
@@ -103,8 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				6A3308E02A3128A400950050 /* Outcome.swift */,
-				6A3308E22A3128F300950050 /* Innings.swift */,
-				6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +130,7 @@
 				6A62416F2A31BC8200758FBA /* ScoreBar.swift */,
 				6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */,
 				6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */,
+				6AD97C3D2A66852500666A6F /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD97C3E2A66852500666A6F /* LaunchScreen.storyboard in Resources */,
 				6A1CE57E2A2FACFD00E7C28F /* Preview Assets.xcassets in Resources */,
 				6A1CE57B2A2FACFD00E7C28F /* Assets.xcassets in Resources */,
 			);
@@ -344,20 +356,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Scoreboard - Gully cricket/Preview Content\"";
-				DEVELOPMENT_TEAM = F2KLL8T45Z;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Scoreboard---Gully-cricket-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sankar.Scoreboard---Gully-cricket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -373,20 +386,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Scoreboard - Gully cricket/Preview Content\"";
-				DEVELOPMENT_TEAM = F2KLL8T45Z;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Scoreboard---Gully-cricket-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sankar.Scoreboard---Gully-cricket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

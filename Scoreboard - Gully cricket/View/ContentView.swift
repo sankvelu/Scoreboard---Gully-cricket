@@ -113,9 +113,8 @@ struct ContentView: View  {
                                             .shimmering()
                                         
                                         
-                                    }
-                                    
-                                ).simultaneousGesture(TapGesture().onEnded {
+                                    })
+                                    .simultaneousGesture(TapGesture().onEnded {
                                     if innings.isEmpty{
                                         let innings1 = Innings()
                                         $innings.append(innings1)
@@ -193,13 +192,14 @@ struct ContentView: View  {
                 }
                 
             }.preferredColorScheme(.light)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
 //        .onAppear(perform: matchvariables.variableStatus)
     }
-    func clearRealm(){
+    
+    private func clearRealm(){
         
-        let realm = try! Realm()
-        try! realm.write {
+        guard let realm = try? Realm() else{return}
+        try? realm.write {
             // Delete all objects from the realm.
             realm.deleteAll()
         }

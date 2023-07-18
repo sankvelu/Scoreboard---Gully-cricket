@@ -23,11 +23,13 @@ struct TagsView: View {
     
     let items: [String]
     var groupedItems: [[String]] = [[String]]()
-    let screenWidth = UIScreen.main.bounds.width
+    let screenWidth = min(UIScreen.main.bounds.width,300)
+    
     
     init(items: [String]) {
         self.items = items
         self.groupedItems = createGroupedItems(items)
+
     }
     
     private func createGroupedItems(_ items: [String]) -> [[String]] {
@@ -42,9 +44,9 @@ struct TagsView: View {
             label.text = word
             label.sizeToFit()
             
-            let labelWidth = label.frame.size.width + 10
-            
-            if (width + labelWidth + 30) < screenWidth {
+            let labelWidth = label.frame.size.width
+
+            if (width + labelWidth ) < screenWidth {
                 width += labelWidth
                 tempItems.append(word)
             } else {
@@ -62,61 +64,61 @@ struct TagsView: View {
     }
     
     var body: some View {
-        ScrollView {
-        VStack(alignment: .leading) {
             
-            ForEach(groupedItems, id: \.self) { subItems in
-                HStack {
-                    ForEach(subItems, id: \.self) { word in
+            ScrollView {
+                
+                VStack(alignment:.leading,spacing: 10) {
+                    
+                    ForEach(groupedItems, id: \.self) { subItems in
                         
-                        let text = String(word.split(separator: "X").first!)
-                        
-                        if(text.contains("NC")){
-                            
-                            let modifiedText = text.replacingOccurrences(of: "NC", with: "")
-                            
-                            Text(modifiedText)
-                                .fixedSize()
-                                .font(Font.caption)
-                                .fontWeight(.bold)
-                                .frame(width:15,height:15)
-                                .padding(15)
-                                .background(.cyan)
-                                .foregroundColor(.white)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white,lineWidth: 1))
-                            
-                        }
-                        else{
-                            Text(text)
-                                .fixedSize()
-                                .font(Font.caption)
-                                .fontWeight(.bold)
-                                .frame(width:15,height:15)
-                                .padding(15)
-                                .background(colors[text, default: Color("Voilet")])
-                                .foregroundColor(.white)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white,lineWidth: 1))
-           
-                        }
+                        HStack {
+                            ForEach(subItems, id: \.self) { word in
+                                
+                                let text = String(word.split(separator: "X").first!)
+                                
+                                if(text.contains("NC")){
+                                    
+                                    let modifiedText = text.replacingOccurrences(of: "NC", with: "")
+                                    
+                                    Text(modifiedText)
+                                        .fixedSize()
+                                        .font(Font.caption)
+                                        .fontWeight(.bold)
+                                        .frame(width:15,height:15)
+                                        .padding(15)
+                                        .background(.cyan)
+                                        .foregroundColor(.white)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.white,lineWidth: 1))
+                                    
+                                }
+                                else{
+                                    Text(text)
+                                        .fixedSize()
+                                        .font(Font.caption)
+                                        .fontWeight(.bold)
+                                        .frame(width:15,height:15)
+                                        .padding(15)
+                                        .background(colors[text, default: Color("Voilet")])
+                                        .foregroundColor(.white)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.white,lineWidth: 1))
+                                    
+                                }
+                            }
+                        }.padding(4)
                     }
-                }
-            }
-              Spacer()
-        }.padding(10)
-    }
+                    Spacer()
+                }.padding(4)
+        }
     }
     
 }
 
 struct WrappedHStackView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack{
-            Color.black
-            VStack{
-                WrappedHStackView(words: ["NB","Wd","1","6","3","2","W","6NC"])
-            }.padding()
-        }
+        
+                WrappedHStackView(words: ["NB","Wd","1","6","3","2"])
+        
     }
 }

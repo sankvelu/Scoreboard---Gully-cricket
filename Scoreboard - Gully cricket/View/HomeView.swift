@@ -26,7 +26,7 @@ struct HomeView: View {
         }.onAppear(perform: toggleMatchStarted)
     }
     
-    func toggleMatchStarted(){
+    private func toggleMatchStarted(){
         if(!matchvariables.matchStarted){
             matchvariables.matchStarted.toggle()
             matchvariables.saveMatchVariables()
