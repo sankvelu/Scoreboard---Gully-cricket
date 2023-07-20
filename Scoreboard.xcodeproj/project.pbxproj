@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0FC0852A69849200C4A4CB /* ScoreSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0FC0842A69849200C4A4CB /* ScoreSectionView.swift */; };
+		6A0FC0872A6985CC00C4A4CB /* OutcomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0FC0862A6985CC00C4A4CB /* OutcomeSectionView.swift */; };
 		6A1BBA042A33138800E2F71B /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BBA032A33138800E2F71B /* MatchView.swift */; };
 		6A1CE5772A2FACFD00E7C28F /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */; };
 		6A1CE5792A2FACFD00E7C28F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE5782A2FACFD00E7C28F /* ContentView.swift */; };
@@ -14,39 +16,47 @@
 		6A1CE57E2A2FACFD00E7C28F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */; };
 		6A3308E12A3128A400950050 /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E02A3128A400950050 /* Outcome.swift */; };
 		6A3308E32A3128F300950050 /* Innings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3308E22A3128F300950050 /* Innings.swift */; };
-		6A4A98AC2A4192910054FEC5 /* PreviousOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */; };
+		6A4A98AC2A4192910054FEC5 /* PreviousOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A98AB2A4192910054FEC5 /* PreviousOverView.swift */; };
+		6A50B7872A698E84001B716B /* ThisOverPreviousOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A50B7862A698E84001B716B /* ThisOverPreviousOverView.swift */; };
+		6A50B7892A69920C001B716B /* MatchvariablesPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A50B7882A69920C001B716B /* MatchvariablesPromptView.swift */; };
+		6A50B78B2A699316001B716B /* ResumeMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A50B78A2A699316001B716B /* ResumeMatchView.swift */; };
 		6A517D542A5306CC003DE1BC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6A517D532A5306CC003DE1BC /* Realm */; };
 		6A517D562A5306CC003DE1BC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6A517D552A5306CC003DE1BC /* RealmSwift */; };
-		6A517D582A530729003DE1BC /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517D572A530729003DE1BC /* Migrator.swift */; };
+		6A517D582A530729003DE1BC /* RealmMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517D572A530729003DE1BC /* RealmMigrator.swift */; };
 		6A517D5C2A531247003DE1BC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517D5B2A531247003DE1BC /* HomeView.swift */; };
-		6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62416F2A31BC8200758FBA /* ScoreBar.swift */; };
+		6A6241702A31BC8200758FBA /* ScoreBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A62416F2A31BC8200758FBA /* ScoreBarView.swift */; };
 		6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */; };
-		6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9379232A374A6600CEE5C7 /* TextBar.swift */; };
+		6A9379242A374A6600CEE5C7 /* TextBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9379232A374A6600CEE5C7 /* TextBarView.swift */; };
 		6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */; };
 		6AD97C3E2A66852500666A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD97C3D2A66852500666A6F /* LaunchScreen.storyboard */; };
-		6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */; };
+		6AEE6A1B2A30FEA500312249 /* OutcomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6A1A2A30FEA500312249 /* OutcomeButtonView.swift */; };
 		6AF31B742A4088BB00CEE2F9 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF31B732A4088BB00CEE2F9 /* Shimmer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A0FC0842A69849200C4A4CB /* ScoreSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSectionView.swift; sourceTree = "<group>"; };
+		6A0FC0862A6985CC00C4A4CB /* OutcomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeSectionView.swift; sourceTree = "<group>"; };
 		6A1BBA032A33138800E2F71B /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
-		6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scoreboard - Gully cricket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1CE5732A2FACFD00E7C28F /* Scoreboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoreboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		6A1CE5782A2FACFD00E7C28F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A1CE57D2A2FACFD00E7C28F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6A3308E02A3128A400950050 /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
 		6A3308E22A3128F300950050 /* Innings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Innings.swift; sourceTree = "<group>"; };
-		6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOver.swift; sourceTree = "<group>"; };
-		6A517D572A530729003DE1BC /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
+		6A4A98AB2A4192910054FEC5 /* PreviousOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousOverView.swift; sourceTree = "<group>"; };
+		6A50B7862A698E84001B716B /* ThisOverPreviousOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisOverPreviousOverView.swift; sourceTree = "<group>"; };
+		6A50B7882A69920C001B716B /* MatchvariablesPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchvariablesPromptView.swift; sourceTree = "<group>"; };
+		6A50B78A2A699316001B716B /* ResumeMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeMatchView.swift; sourceTree = "<group>"; };
+		6A517D572A530729003DE1BC /* RealmMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrator.swift; sourceTree = "<group>"; };
 		6A517D5B2A531247003DE1BC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		6A60ECF92A540D42004347C5 /* Scoreboard---Gully-cricket-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Scoreboard---Gully-cricket-Info.plist"; sourceTree = SOURCE_ROOT; };
-		6A62416F2A31BC8200758FBA /* ScoreBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBar.swift; sourceTree = "<group>"; };
+		6A60ECF92A540D42004347C5 /* Scoreboard.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Scoreboard.plist; sourceTree = SOURCE_ROOT; };
+		6A62416F2A31BC8200758FBA /* ScoreBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBarView.swift; sourceTree = "<group>"; };
 		6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedHStackView.swift; sourceTree = "<group>"; };
-		6A9379232A374A6600CEE5C7 /* TextBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBar.swift; sourceTree = "<group>"; };
+		6A9379232A374A6600CEE5C7 /* TextBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBarView.swift; sourceTree = "<group>"; };
 		6AC0D0BC2A377E9700A9E867 /* MatchVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVariables.swift; sourceTree = "<group>"; };
 		6AD97C3D2A66852500666A6F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeButton.swift; sourceTree = "<group>"; };
+		6AEE6A1A2A30FEA500312249 /* OutcomeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +85,7 @@
 		6A1CE56A2A2FACFD00E7C28F = {
 			isa = PBXGroup;
 			children = (
-				6A1CE5752A2FACFD00E7C28F /* Scoreboard - Gully cricket */,
+				6A1CE5752A2FACFD00E7C28F /* Scoreboard */,
 				6A1CE5742A2FACFD00E7C28F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,24 +93,24 @@
 		6A1CE5742A2FACFD00E7C28F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */,
+				6A1CE5732A2FACFD00E7C28F /* Scoreboard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6A1CE5752A2FACFD00E7C28F /* Scoreboard - Gully cricket */ = {
+		6A1CE5752A2FACFD00E7C28F /* Scoreboard */ = {
 			isa = PBXGroup;
 			children = (
 				6A1CE5762A2FACFD00E7C28F /* Scoreboard.swift */,
-				6A517D572A530729003DE1BC /* Migrator.swift */,
+				6A517D572A530729003DE1BC /* RealmMigrator.swift */,
 				6A3308DF2A31287D00950050 /* Model */,
 				6A0C13D82A658BE300D0E84F /* ViewModel */,
 				6A62416E2A31BBFE00758FBA /* View */,
 				6A1CE57A2A2FACFD00E7C28F /* Assets.xcassets */,
-				6A60ECF92A540D42004347C5 /* Scoreboard---Gully-cricket-Info.plist */,
+				6A60ECF92A540D42004347C5 /* Scoreboard.plist */,
 				6A1CE57C2A2FACFD00E7C28F /* Preview Content */,
 			);
-			path = "Scoreboard - Gully cricket";
+			path = Scoreboard;
 			sourceTree = "<group>";
 		};
 		6A1CE57C2A2FACFD00E7C28F /* Preview Content */ = {
@@ -125,11 +135,16 @@
 				6A1CE5782A2FACFD00E7C28F /* ContentView.swift */,
 				6A517D5B2A531247003DE1BC /* HomeView.swift */,
 				6A1BBA032A33138800E2F71B /* MatchView.swift */,
+				6A50B7882A69920C001B716B /* MatchvariablesPromptView.swift */,
+				6A50B78A2A699316001B716B /* ResumeMatchView.swift */,
+				6A0FC0842A69849200C4A4CB /* ScoreSectionView.swift */,
+				6A0FC0862A6985CC00C4A4CB /* OutcomeSectionView.swift */,
+				6A50B7862A698E84001B716B /* ThisOverPreviousOverView.swift */,
 				6A8D750C2A3AF96100A9969A /* WrappedHStackView.swift */,
-				6A9379232A374A6600CEE5C7 /* TextBar.swift */,
-				6A62416F2A31BC8200758FBA /* ScoreBar.swift */,
-				6AEE6A1A2A30FEA500312249 /* OutcomeButton.swift */,
-				6A4A98AB2A4192910054FEC5 /* PreviousOver.swift */,
+				6A9379232A374A6600CEE5C7 /* TextBarView.swift */,
+				6A62416F2A31BC8200758FBA /* ScoreBarView.swift */,
+				6AEE6A1A2A30FEA500312249 /* OutcomeButtonView.swift */,
+				6A4A98AB2A4192910054FEC5 /* PreviousOverView.swift */,
 				6AD97C3D2A66852500666A6F /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -138,9 +153,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A1CE5722A2FACFD00E7C28F /* Scoreboard - Gully cricket */ = {
+		6A1CE5722A2FACFD00E7C28F /* Scoreboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A1CE5812A2FACFD00E7C28F /* Build configuration list for PBXNativeTarget "Scoreboard - Gully cricket" */;
+			buildConfigurationList = 6A1CE5812A2FACFD00E7C28F /* Build configuration list for PBXNativeTarget "Scoreboard" */;
 			buildPhases = (
 				6A1CE56F2A2FACFD00E7C28F /* Sources */,
 				6A1CE5702A2FACFD00E7C28F /* Frameworks */,
@@ -150,14 +165,14 @@
 			);
 			dependencies = (
 			);
-			name = "Scoreboard - Gully cricket";
+			name = Scoreboard;
 			packageProductDependencies = (
 				6AF31B732A4088BB00CEE2F9 /* Shimmer */,
 				6A517D532A5306CC003DE1BC /* Realm */,
 				6A517D552A5306CC003DE1BC /* RealmSwift */,
 			);
 			productName = "Scoreboard - Gully cricket";
-			productReference = 6A1CE5732A2FACFD00E7C28F /* Scoreboard - Gully cricket.app */;
+			productReference = 6A1CE5732A2FACFD00E7C28F /* Scoreboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -175,7 +190,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A1CE56E2A2FACFD00E7C28F /* Build configuration list for PBXProject "Scoreboard - Gully cricket" */;
+			buildConfigurationList = 6A1CE56E2A2FACFD00E7C28F /* Build configuration list for PBXProject "Scoreboard" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -192,7 +207,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A1CE5722A2FACFD00E7C28F /* Scoreboard - Gully cricket */,
+				6A1CE5722A2FACFD00E7C28F /* Scoreboard */,
 			);
 		};
 /* End PBXProject section */
@@ -216,16 +231,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A3308E12A3128A400950050 /* Outcome.swift in Sources */,
+				6A50B7872A698E84001B716B /* ThisOverPreviousOverView.swift in Sources */,
 				6A517D5C2A531247003DE1BC /* HomeView.swift in Sources */,
 				6A1CE5792A2FACFD00E7C28F /* ContentView.swift in Sources */,
-				6A4A98AC2A4192910054FEC5 /* PreviousOver.swift in Sources */,
-				6A9379242A374A6600CEE5C7 /* TextBar.swift in Sources */,
-				6AEE6A1B2A30FEA500312249 /* OutcomeButton.swift in Sources */,
+				6A4A98AC2A4192910054FEC5 /* PreviousOverView.swift in Sources */,
+				6A9379242A374A6600CEE5C7 /* TextBarView.swift in Sources */,
+				6AEE6A1B2A30FEA500312249 /* OutcomeButtonView.swift in Sources */,
 				6A1CE5772A2FACFD00E7C28F /* Scoreboard.swift in Sources */,
+				6A50B7892A69920C001B716B /* MatchvariablesPromptView.swift in Sources */,
 				6AC0D0BD2A377E9700A9E867 /* MatchVariables.swift in Sources */,
 				6A1BBA042A33138800E2F71B /* MatchView.swift in Sources */,
-				6A517D582A530729003DE1BC /* Migrator.swift in Sources */,
-				6A6241702A31BC8200758FBA /* ScoreBar.swift in Sources */,
+				6A50B78B2A699316001B716B /* ResumeMatchView.swift in Sources */,
+				6A0FC0872A6985CC00C4A4CB /* OutcomeSectionView.swift in Sources */,
+				6A517D582A530729003DE1BC /* RealmMigrator.swift in Sources */,
+				6A6241702A31BC8200758FBA /* ScoreBarView.swift in Sources */,
+				6A0FC0852A69849200C4A4CB /* ScoreSectionView.swift in Sources */,
 				6A8D750D2A3AF96100A9969A /* WrappedHStackView.swift in Sources */,
 				6A3308E32A3128F300950050 /* Innings.swift in Sources */,
 			);
@@ -284,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -338,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -355,15 +375,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Scoreboard - Gully cricket/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_ASSET_PATHS = "\"Scoreboard/Preview Content\"";
+				DEVELOPMENT_TEAM = F2KLL8T45Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Scoreboard---Gully-cricket-Info.plist";
+				INFOPLIST_FILE = Scoreboard.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -371,6 +392,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sankarscoreboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -385,15 +407,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Scoreboard - Gully cricket/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_ASSET_PATHS = "\"Scoreboard/Preview Content\"";
+				DEVELOPMENT_TEAM = F2KLL8T45Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Scoreboard---Gully-cricket-Info.plist";
+				INFOPLIST_FILE = Scoreboard.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -401,6 +424,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sankarscoreboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -411,7 +435,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A1CE56E2A2FACFD00E7C28F /* Build configuration list for PBXProject "Scoreboard - Gully cricket" */ = {
+		6A1CE56E2A2FACFD00E7C28F /* Build configuration list for PBXProject "Scoreboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A1CE57F2A2FACFD00E7C28F /* Debug */,
@@ -420,7 +444,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A1CE5812A2FACFD00E7C28F /* Build configuration list for PBXNativeTarget "Scoreboard - Gully cricket" */ = {
+		6A1CE5812A2FACFD00E7C28F /* Build configuration list for PBXNativeTarget "Scoreboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A1CE5822A2FACFD00E7C28F /* Debug */,
@@ -436,16 +460,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 10.41.0;
 			};
 		};
 		6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = exactVersion;
+				version = 1.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

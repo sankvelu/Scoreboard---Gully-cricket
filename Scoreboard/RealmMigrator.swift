@@ -8,17 +8,16 @@
 import Foundation
 import RealmSwift
 
-class Migrator {
-    
+class RealmMigrator {
     init() {
         updateSchema()
     }
-    
     func updateSchema() {
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         Realm.Configuration.defaultConfiguration = config
 
-        let _ = try! Realm()
+        guard let _ = try? Realm() else {
+            return
+      }
     }
-    
 }

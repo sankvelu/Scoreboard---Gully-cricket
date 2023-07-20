@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TextBar: View {
-    
-    var textLabel : String
-    
+
+    var textLabel: String
+
     var body: some View {
         Text(textLabel)
             .padding(10)
@@ -24,6 +24,9 @@ struct TextBar: View {
 
 struct TextBar_Previews: PreviewProvider {
     static var previews: some View {
-        TextBar(textLabel: "Some Text")
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            TextBar(textLabel: "Some Text")
+        }
     }
 }

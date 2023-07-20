@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ScoreBar: View {
-    var leftComp : String
-    var rightComp : String
+    var leftComp: String
+    var rightComp: String
     var body: some View {
-        
-        ZStack{
+
+        ZStack {
             Text("\(leftComp) : \(rightComp)")
                 .padding(10)
                 .font(Font.title2)
@@ -20,16 +20,16 @@ struct ScoreBar: View {
                 .background(.ultraThinMaterial)
                 .border(Color.black, width: 0.1)
                 .cornerRadius(10)
-                
+
         }
     }
 }
 
 struct ScoreBar_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack{
-            Color.white
-            ScoreBar(leftComp: "Score",rightComp: "45")
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            ScoreBar(leftComp: "Score", rightComp: "45")
         }
     }
 }

@@ -1,14 +1,14 @@
-//___FILEHEADER___
+// ___FILEHEADER___
 
 import SwiftUI
 
 @main
-struct  Scoreboard:App {
-    
+struct  Scoreboard: App {
+
     @StateObject var matchvariables = MatchVariables.matchVariables
-    
-    let migrator = Migrator()
-    
+
+    let migrator = RealmMigrator()
+
     var body: some Scene {
         WindowGroup {
             ContentView()

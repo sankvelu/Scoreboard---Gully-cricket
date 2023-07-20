@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct PreviousOver: View {
-    
+
     @Environment(\.dismiss) var dismiss
-    
+
     var previousOverOutcome =  [String]()
-    var previousOverRuns : Int
-    
+    var previousOverRuns: Int
+
     var body: some View {
-        NavigationView{
-            ZStack{
-                
+        NavigationView {
+            ZStack {
+
                 Image("PreviousOver")
-                VStack(spacing:10){
+                VStack(spacing: 10) {
                     Spacer()
                     Spacer(minLength: 400)
                     TextBar(textLabel: "Previous Over")
                     ScoreBar(leftComp: "Runs", rightComp: String(previousOverRuns))
                         .cornerRadius(20)
-                    HStack{
-                        HStack{
+                    HStack {
+                        HStack {
                             Circle()
                                 .fill(Color("Voilet"))
                                 .frame(width: 20, height: 20)
@@ -38,8 +38,8 @@ struct PreviousOver: View {
                         }
                         .padding(1)
                         .cornerRadius(10)
-                        
-                        HStack{
+
+                        HStack {
                             Circle()
                                 .fill(.cyan)
                                 .frame(width: 20, height: 20)
@@ -51,20 +51,19 @@ struct PreviousOver: View {
                         }
                         .padding(1)
                         .cornerRadius(10)
-                        
+
                     }.padding(2)
-                    
-                    
+
                     WrappedHStackView(words: previousOverOutcome)
                         .frame(height: 500)
                         .padding(.horizontal)
-                    
+
                     Spacer()
                     Spacer()
                 }
                 .padding(50)
             }
-            .toolbar{
+            .toolbar {
                 Button("x Close ") {
                     dismiss()
                 }
@@ -78,9 +77,8 @@ struct PreviousOver: View {
     }
 }
 
-
 struct PreviousOver_Previews: PreviewProvider {
     static var previews: some View {
-        PreviousOver(previousOverOutcome: ["NB","Wd","W","1","6","3"],previousOverRuns: 12)
+        PreviousOver(previousOverOutcome: ["NB", "Wd", "W", "1", "6", "3"], previousOverRuns: 12)
     }
 }
