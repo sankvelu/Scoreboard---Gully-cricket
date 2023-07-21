@@ -11,9 +11,9 @@ import RealmSwift
 struct ThisOverPreviousOverView: View {
     @EnvironmentObject var matchvariables: MatchVariables
     @ObservedRealmObject var innings: Innings
-
+    
     @Binding var showingPreviousOver: Bool
-
+    
     var body: some View {
         HStack {
             Text("This Over")
@@ -23,7 +23,7 @@ struct ThisOverPreviousOverView: View {
                 .foregroundColor(Color.black)
                 .border(Color("Neva"), width: 0.5)
                 .cornerRadius(10)
-
+            
             Button("Previous Over") {
                 showingPreviousOver.toggle()
             }
@@ -33,18 +33,18 @@ struct ThisOverPreviousOverView: View {
             .foregroundColor(Color.black)
             .cornerRadius(10)
             .sheet(isPresented: $showingPreviousOver) {
-
+                
                 let (previousOverOutcome, previousOverRuns) = innings.previousOver()
-
+                
                 PreviousOver(previousOverOutcome: previousOverOutcome, previousOverRuns: previousOverRuns)
             }
-
+            
         }
         HStack {
             Circle()
                 .fill(.cyan)
                 .frame(width: 20, height: 20)
-
+            
             Text("Ball Not Counted")
                 .padding(3)
                 .cornerRadius(20)

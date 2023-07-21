@@ -9,31 +9,31 @@ import SwiftUI
 import RealmSwift
 
 struct Matchview: View {
-
+    
     @EnvironmentObject var matchvariables: MatchVariables
     @ObservedRealmObject var innings: Innings
-
+    
     // Flags
     @State private var showingPreviousOver = false
     @State private var alertInningsCompleted = false
     @State var alertMatchCompleted = false
-
-    @State private var isBouncing = false
-
+    
+    @State private var isAnimating = false
+    
     var body: some View {
-
+        
         NavigationView {
-
+            
             ZStack {
-
+                
                 Image("Grass")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
-
+                
                 GeometryReader { geometry in
                     VStack(alignment: .center) {
-
+                        
                         Text(matchvariables.chaseStarted ? "2nd Innings":"1st Innings")
                             .font(Font.title)
                             .padding()
@@ -42,13 +42,13 @@ struct Matchview: View {
                             .clipShape(Rectangle())
                             .cornerRadius(20)
                             .padding(1)
-
+                        
                         ScoreSectionView(innings: innings)
-
+                        
                         VStack(alignment: .center) {
-
+                            
                             OutcomeSectionView(innings: innings, alertMatchCompleted: $alertMatchCompleted)
-
+                            
                         }.simultaneousGesture(TapGesture().onEnded {
                             if (!matchvariables.inningsCompleted)&&(!matchvariables.chaseStarted) {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -67,67 +67,67 @@ struct Matchview: View {
                         .border(.black, width: 0.15)
                         .cornerRadius(50)
                         .padding(.horizontal)
-
+                        
                         Spacer()
-
+                        
                         VStack {
-
+                            
                             ThisOverPreviousOverView(innings: innings, showingPreviousOver: $showingPreviousOver)
-
+                            
                             WrappedHStackView(words: innings.thisOver())
                                 .padding(.bottom)
                         }
-
+                        
                         // Innings or Match completed stages
-
+                        
                         if matchvariables.inningsCompleted && !matchvariables.chaseStarted {
                             VStack(alignment: .center) {
                                 OutcomeButton(text: "Start 2nd innings") {
                                     matchvariables.chaseStarted.toggle()
                                     matchvariables.saveMatchVariables()
-
+                                    
                                 }
                                 .shimmering()
                                 .background(.thinMaterial)
                                 .cornerRadius(20)
-                                .offset(y: -20)
-                                .scaleEffect(isBouncing ? 1.2 : 1.0)
-                                .animation(Animation.spring(response: 2.5, dampingFraction: 0.8, blendDuration: 0.5).repeatForever(autoreverses: false), value: isBouncing)
-                            }.onAppear {
-                                isBouncing = true // Start the bouncing animation when the view appears
+                                .offset(y : isAnimating ? -15 : -20)
+                                .scaleEffect(isAnimating ? 1.1 : 1.3)
                             }
-
+                            .onAppear {
+                                animateButton()
+                            }
+                            
                         }
-
+                        
                         if matchvariables.chaseCompleted {
                             VStack(alignment: .center) {
                                 TextBar(textLabel: "Match Completed!")
                                     .shimmering()
                                     .background(.thinMaterial)
                                     .cornerRadius(10)
-
+                                
                             }
                         }
                         Spacer()
                     }.frame(maxWidth: geometry.size.width * 1)
                 }
             }
-
+            
             //  Ininngs completed Alert
-
+            
             .alert("1st Innings Completed!", isPresented: $alertInningsCompleted) {
                 Button("OK") {
-
+                    
                 }
             }message: {
                 Text("Target: \(innings.runs + 1)")
             }
-
+            
             //  Match completed Alert
-
+            
             .alert("Match Completed", isPresented: $alertMatchCompleted) {
                 Button("OK") {
-
+                    
                 }
             }message: {
                 if innings.runs >= matchvariables.target {
@@ -140,7 +140,12 @@ struct Matchview: View {
             }
         }
     }
-
+    private func animateButton() {
+        withAnimation(.interpolatingSpring(stiffness: 350, damping: 5, initialVelocity: 10).repeatForever()) {
+            isAnimating = true
+        }
+    }
+    
 }
 
 struct MatchView_Previews: PreviewProvider {

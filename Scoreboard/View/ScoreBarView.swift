@@ -11,7 +11,7 @@ struct ScoreBar: View {
     var leftComp: String
     var rightComp: String
     var body: some View {
-
+        
         ZStack {
             Text("\(leftComp) : \(rightComp)")
                 .padding(10)
@@ -20,7 +20,7 @@ struct ScoreBar: View {
                 .background(.ultraThinMaterial)
                 .border(Color.black, width: 0.1)
                 .cornerRadius(10)
-
+            
         }
     }
 }

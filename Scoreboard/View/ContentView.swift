@@ -10,24 +10,24 @@ import Shimmer
 import RealmSwift
 
 struct ContentView: View {
-
+    
     @EnvironmentObject var matchvariables: MatchVariables
     @ObservedResults(Innings.self) var innings
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
-
+                
                 Image("Cricket")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
-
+                
                 GeometryReader { geometry in
                     VStack {
-
+                        
                         Spacer(minLength: 50)
-
+                        
                         Text("Scoreboard - Gully Cricket")
                             .padding()
                             .font(Font.title)
@@ -36,19 +36,19 @@ struct ContentView: View {
                             .border(Color.green, width: 0.15)
                             .cornerRadius(10)
                             .background(Color(uiColor: UIColor(red: 0.82, green: 1.00, blue: 0.74, alpha: 1.00)).opacity(0.3))
-
+                        
                         // Match not started
-
+                        
                         if !matchvariables.matchStarted {
-
+                            
                             Spacer()
-
+                            
                             VStack(alignment: .center, spacing: 50) {
-
+                                
                                 Spacer()
-
+                                
                                 MatchvariablesPromptView()
-
+                                
                                 NavigationLink(
                                     destination: HomeView(),
                                     label: {
@@ -61,7 +61,7 @@ struct ContentView: View {
                                             .border(Color.green, width: 0.15)
                                             .cornerRadius(50)
                                             .shimmering()
-
+                                        
                                     })
                                 .simultaneousGesture(TapGesture().onEnded {
                                     if innings.isEmpty {
@@ -71,15 +71,15 @@ struct ContentView: View {
                                         $innings.append(innings2)
                                     }
                                 }).padding()
-
+                                
                                 Spacer()
                                 Spacer()
                             }
                             Spacer()
                         }
-
+                        
                         // Match Started
-
+                        
                         else {
                             ResumeMatchView()
                         }
@@ -99,29 +99,28 @@ struct ContentView: View {
                             matchvariables.chaseCompleted.toggle()
                         }
                         matchvariables.saveMatchVariables()
-
+                        
                         clearRealm()
-
+                        
                     }.cornerRadius(20)
-
+                    
                 }message: {
                     Text("Match progress will be lost")
                 }
-
+                
             }.preferredColorScheme(.light)
         }.navigationViewStyle(StackNavigationViewStyle())
-        //        .onAppear(perform: matchvariables.variableStatus)
     }
-
+    
     private func clearRealm() {
-
+        
         guard let realm = try? Realm() else {return}
         try? realm.write {
             // Delete all objects from the realm.
             realm.deleteAll()
         }
     }
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

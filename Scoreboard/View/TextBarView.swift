@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TextBar: View {
-
+    
     var textLabel: String
-
+    
     var body: some View {
         Text(textLabel)
             .padding(10)

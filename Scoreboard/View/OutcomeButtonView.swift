@@ -10,7 +10,7 @@ import SwiftUI
 struct OutcomeButton: View {
     var text: String
     var clicked: (() -> Void) /// use closure for callback
-
+    
     var body: some View {
         Button(action: clicked) { /// call the closure here
             HStack {

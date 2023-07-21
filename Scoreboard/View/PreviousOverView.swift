@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PreviousOver: View {
-
+    
     @Environment(\.dismiss) var dismiss
-
+    
     var previousOverOutcome =  [String]()
     var previousOverRuns: Int
-
+    
     var body: some View {
         NavigationView {
             ZStack {
-
+                
                 Image("PreviousOver")
                 VStack(spacing: 10) {
                     Spacer()
@@ -38,7 +38,7 @@ struct PreviousOver: View {
                         }
                         .padding(1)
                         .cornerRadius(10)
-
+                        
                         HStack {
                             Circle()
                                 .fill(.cyan)
@@ -51,13 +51,13 @@ struct PreviousOver: View {
                         }
                         .padding(1)
                         .cornerRadius(10)
-
+                        
                     }.padding(2)
-
+                    
                     WrappedHStackView(words: previousOverOutcome)
                         .frame(height: 500)
                         .padding(.horizontal)
-
+                    
                     Spacer()
                     Spacer()
                 }
