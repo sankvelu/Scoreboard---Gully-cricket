@@ -461,7 +461,7 @@
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
 				kind = exactVersion;
-				version = 10.41.0;
+				version = 10.41.1;
 			};
 		};
 		6AF31B722A4088BB00CEE2F9 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
