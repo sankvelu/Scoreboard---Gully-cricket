@@ -90,7 +90,7 @@ struct Matchview: View {
                                 .shimmering()
                                 .background(.thinMaterial)
                                 .cornerRadius(20)
-                                .offset(y : isAnimating ? -15 : -20)
+                                .offset(y : isAnimating ? -10 : -15)
                                 .scaleEffect(isAnimating ? 1.1 : 1.3)
                             }
                             .onAppear {
